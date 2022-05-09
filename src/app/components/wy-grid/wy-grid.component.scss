@@ -1,0 +1,91 @@
+﻿.wy-grid {
+  .wy-removed td {
+    color: red !important;
+  }
+
+  td {
+    .wy-button {
+      margin-bottom: 3px;
+    }
+
+    .wy-coin {
+      cursor: pointer;
+    }
+
+    .wy-cls-entity-actions {
+      button {
+        border-radius: 0;
+      }
+    }
+  }
+
+  tr {
+    cursor: pointer;
+  }
+
+  .kendo-template {
+    display: none;
+  }
+
+  .k-grid .k-detail-row {
+    .wy-grid {
+      box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    }
+
+    .wy-grid-toolbar {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      padding: 5px 5px 2px 5px;
+    }
+
+    .wy-cls-grid-settings,
+    .wy-cls-grid-more {
+      display: none;
+    }
+
+    .wy-label-indent {
+      display: none !important;
+    }
+
+    .k-hierarchy-cell,
+    .k-detail-cell {
+      background-color: white;
+
+      &:hover {
+        background-color: white;
+      }
+    }
+  }
+}
+
+.wy-entity-grid-actions-dropdown {
+  width: 200px;
+}
+
+.wy-pivot {
+  .wdr-credits {
+    display: none;
+  }
+}
+
+.wy-no-records {
+  text-align: center;
+  margin: 10px;
+}
+
+.wy-uom-value {
+  display: inline-block;
+}
+
+.wy-cls-create-new-item {
+  width: 250px;
+  line-height: 45px;
+}
+
+.wy-grid-card-view {
+  margin-top: 5px;
+  background-color: #fff;
+}
+
+.k-pager {
+  border: 0;
+}

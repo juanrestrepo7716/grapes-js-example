@@ -1,0 +1,13 @@
+<!--::Bag::Default
+-->
+<div class="input-group wy-quick-search">
+    <span class="input-group-btn">
+        <button kendoButton (click)="triggerQuickSearchChangeHandler()"><i class="fas fa-search"></i></button>
+    </span>
+    <input class="form-control" 
+        [(ngModel)]="search" (ngModelChange)="triggerQuickSearchChangeHandlerWithDelay()" 
+        i18n-placeholder="@@QuickSearch" placeholder="quick search" type="text">
+    <span class="input-group-btn">
+        <button kendoButton (click)="clearQuickSearch()"><i class="fas fa-times"></i></button>
+    </span>
+</div>

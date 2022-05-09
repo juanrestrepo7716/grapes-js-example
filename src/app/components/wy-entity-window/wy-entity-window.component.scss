@@ -1,0 +1,13 @@
+.wy-entity-window {
+    z-index: 10001 !important; // disables bringToFront feature
+
+    .wy-entity-window-contents {
+        padding: 16px;
+        height: calc(100% - 36px);
+        overflow: auto;
+    }
+
+    > .k-window-content {
+        padding: 0 !important;
+    }
+}

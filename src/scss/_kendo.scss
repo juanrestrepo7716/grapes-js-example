@@ -1,0 +1,12 @@
+/*!
+ * wyStack - Stylesheet - Kendo.
+ */
+
+// Override Kendo variables
+@import "kendo-variables";
+
+// Import Kendo styles
+@import "/node_modules/@progress/kendo-theme-material/dist/all.scss";
+
+// Override Kendo variables
+@import "kendo-customization";

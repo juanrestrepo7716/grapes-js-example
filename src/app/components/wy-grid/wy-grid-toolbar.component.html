@@ -1,0 +1,58 @@
+<!--::Bag::Default
+-->
+<div class="wy-grid-toolbar">
+    <div *ngIf="showNew">
+        <ng-content select="[newButton]"></ng-content>
+    </div>
+    <button *ngIf="showGridViewMode" class="wy-button wy-cls-gridviewmode" kendoButton
+        title="Switch grid view mode" i18n-title="@@SwitchGridViewMode"
+        (click)="triggerAction(toolbarActionType.SwitchGridViewMode)">
+        <i *ngIf="gridViewMode == 'Cards'" class="fas fa-list"></i>
+        <i *ngIf="gridViewMode == 'Columns'" class="fas fa-th"></i>
+        <span *ngIf="gridViewMode == 'Cards'" class="d-none d-sm-inline wy-label-indent" i18n="@@Columns">Columns</span>
+        <span *ngIf="gridViewMode == 'Columns'" class="d-none d-sm-inline wy-label-indent" i18n="@@Cards">Cards</span>
+    </button>
+    <div *ngFor="let dataItem of primaryToolbarItems">
+        <button class="wy-button wy-cls-grid-settings" kendoButton (click)="triggerAction(dataItem.action)"
+            *ngIf="dataItem.action == toolbarActionType.OpenGridConfiguration" title="Configure" i18n-title="@@GridConfiguration">
+            <span class="k-icon k-i-cog"></span>
+            <span class="d-none d-sm-inline wy-label-indent" i18n="@@GridConfiguration">Configure</span>
+        </button>
+        <button class="wy-button wy-cls-toggle-grid-filter" kendoButton (click)="triggerAction(dataItem.action)"
+            *ngIf="dataItem.action == toolbarActionType.ToggleFilter" title="Filter" i18n-title="@@Filter">
+            <span class="k-icon k-i-filter"></span>
+            <span class="d-none d-sm-inline wy-label-indent" i18n="@@Filter">Filter</span>
+        </button>
+        <button class="wy-button wy-cls-toggle-grid-group" kendoButton (click)="triggerAction(dataItem.action)"
+            *ngIf="dataItem.action == toolbarActionType.ToggleGroupBy" title="Group by" i18n-title="@@Group">
+            <span class="k-icon k-i-group"></span>
+            <span class="d-none d-sm-inline wy-label-indent" i18n="@@Group">Group by</span>
+        </button>
+    </div>
+    <ng-template *ngIf="showToolbar == 'Simple'; else showAdvancedToolbar">
+    </ng-template>
+    <ng-template #showAdvancedToolbar>
+        <kendo-dropdownbutton [data]="secondaryToolbarItems" icon="more-vertical" class="wy-cls-grid-more"
+            (itemClick)="triggerAction($event.action)">
+            <span i18n="@@More">More</span>
+            <ng-template kendoDropDownButtonItemTemplate let-dataItem>
+                <span class="wy-cls-export-excel" *ngIf="dataItem.action == toolbarActionType.ExportExcel" title="Export" i18n-title="@@ExportExcel">
+                    <span style="color: #217346;" class="k-icon k-i-file-excel"></span>
+                    <span class="wy-label-indent" i18n="@@ExportExcel">Export</span>
+                </span>
+                <span class="wy-cls-export-pdf" *ngIf="dataItem.action == toolbarActionType.ExportPDF" title="PDF" i18n-title="@@ExportPDF">
+                    <span style="color: #DA251C;" class="k-icon k-i-file-pdf"></span>
+                    <span class="wy-label-indent" i18n="@@ExportPDF">PDF</span>
+                </span>
+                <span class="wy-cls-open-pivot" *ngIf="dataItem.action == toolbarActionType.OpenPivot" title="Pivot" i18n-title="@@Pivot">
+                    <span class="k-icon k-i-table-properties"></span>
+                    <span class="wy-label-indent" i18n="@@Pivot">Pivot</span>
+                </span>
+                <span class="wy-cls-open-recycle-bin" *ngIf="dataItem.action == toolbarActionType.OpenRecycleBin" title="Recycle bin" i18n-title="@@OpenRecycleBin">
+                    <span class="k-icon k-i-trash"></span>
+                    <span class="wy-label-indent" i18n="@@OpenRecycleBin">Recycle bin</span>
+                </span>
+            </ng-template>
+        </kendo-dropdownbutton>
+    </ng-template>
+</div>

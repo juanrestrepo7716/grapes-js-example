@@ -1,0 +1,30 @@
+﻿.wy-image-picker {
+  a.wy-blob-link {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .wy-picture-focus-point-box {
+    position: relative;
+    width: 300px;
+
+    img {
+      border: 1px solid #ccc;
+      width: 300px;
+    }
+
+    .wy-picture-focus-point {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      opacity: 0.8;
+      margin-top: -10px;
+      margin-left: -10px;
+      border-radius: 20px !important;
+    }
+  }
+}

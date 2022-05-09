@@ -1,0 +1,12 @@
+<p *ngIf="isBusy" i18n="@@PleaseWait">Please wait...</p>
+<div class="alert alert-warning" *ngIf="!layers && !isBusy" i18n="@@CannotDisplayMapNoCardData">
+    Cannot display map. No card data found.
+</div>
+<div *ngIf="layers && !isBusy" class="wy-map"
+    leaflet
+    [leafletOptions]="options"
+    [leafletLayersControl]="layersControl"
+    [leafletLayers]="layers"
+    (click)="onMapClick($event)"
+    (leafletMapReady)="onMapReady($event)">
+</div>

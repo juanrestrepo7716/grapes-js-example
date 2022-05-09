@@ -1,0 +1,9 @@
+﻿<div class="wy-map-point-editor-container">
+    <div *ngIf="layers" class="wy-map-point-editor"
+        leaflet
+        [leafletOptions]="options"
+        [leafletLayersControl]="layersControl"
+        [leafletLayers]="layers"
+        (leafletMapReady)="onMapReady($event)">
+    </div>
+</div>

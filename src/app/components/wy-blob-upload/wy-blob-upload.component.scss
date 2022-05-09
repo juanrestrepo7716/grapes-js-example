@@ -1,0 +1,13 @@
+﻿.wy-blob-upload {
+    border: 2px solid #efefef;
+
+    .wy-enough-files {
+        .k-dropzone {
+            display: none;
+        }
+    }
+
+    .k-upload-files {
+        border: 0;
+    }
+}

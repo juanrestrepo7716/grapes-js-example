@@ -1,0 +1,26 @@
+﻿<ng-container *ngIf="orientation == 'horizontal'; else verticalOrientation">
+    <div *ngFor="let prop of properties | keyvalue" class="form-group row wy-property-editor">
+        <label class="col-md-2 control-label wy-property-editor-title">
+            📝 {{ getPropertyTitle(prop.key) }}
+        </label>
+
+        <div class="col-md-10 wy-property-editor-value">
+            <input type="text" kendoTextBox [ngModel]="properties[prop.key]"
+                [ngModelOptions]="{updateOn: 'blur', standalone: true}"
+                (ngModelChange)="onPropertyChange(prop.key, $event)" [disabled]="isDisabled" />
+        </div>
+    </div>
+</ng-container>
+<ng-template #verticalOrientation>
+    <div *ngFor="let prop of properties | keyvalue" class="wy-property-editor">
+        <label class="control-label wy-property-editor-title">
+            📝 {{ getPropertyTitle(prop.key) }}
+        </label>
+
+        <div class="wy-property-editor-value">
+            <input type="text" kendoTextBox [ngModel]="properties[prop.key]"
+                [ngModelOptions]="{updateOn: 'blur', standalone: true}"
+                (ngModelChange)="onPropertyChange(prop.key, $event)" [disabled]="isDisabled" />
+        </div>
+    </div>
+</ng-template>

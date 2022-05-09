@@ -1,0 +1,17 @@
+//::Bag::Default
+/*!
+ * wyStack - Stylesheet - Bootstrap + wyStack.
+ */
+// Override Boostrap variables
+@import "bootstrap-variables";
+// Import Bootstrap source files
+@import "/node_modules/bootstrap/scss/bootstrap";
+// wyStack styles
+@import "wy";
+// App styles
+//
+// FontAwesome CSS variables
+:root {
+    --fa-primary-color: #{$app-color};
+    --fa-secondary-color: #{$app-secondary-color};
+}

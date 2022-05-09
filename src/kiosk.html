@@ -1,0 +1,56 @@
+<!--::Bag::Deployment
+-->
+<!doctype html>
+<html>
+<head>
+	<title>Todo App KIOSK mode</title>
+	<style>
+		iframe {
+			width: 100%;
+			height: 100%;
+			border: 0;
+		}
+		body, html {
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		var STORAGE_KEY = 'kiosk-mode-url';
+		function tryCollectGarbage() {
+			if (window.CollectGarbage) {
+				window.CollectGarbage();
+			}
+		}
+		function clearMemory() {
+			tryCollectGarbage();
+			// save current url to local storage
+			var iframe = window.frames[0];
+			var url = iframe.location.href;
+			localStorage.setItem(STORAGE_KEY, url);
+			window.location.reload();
+		}
+	</script>
+	<!--<button onclick="clearMemory()">x</button>-->
+	<iframe src="about:blank"></iframe>
+	<script>
+		tryCollectGarbage();
+		// set iframe url
+		var iframe = window.frames[0];
+		var url = localStorage.getItem(STORAGE_KEY);
+		if (url) {
+			iframe.location.href = url;
+		}
+		else {
+			iframe.location.href = '/';
+		}
+		// refresh every hour
+		window.setInterval(clearMemory, 60 * 60 * 1000);
+	</script>
+</body>
+</html>

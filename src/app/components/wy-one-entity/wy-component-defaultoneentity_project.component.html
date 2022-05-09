@@ -1,0 +1,380 @@
+<form *ngIf="hasEntity" novalidate [formGroup]="editForm" class="wy-one-entity">
+    <div class="row">
+        <div class="col-fill" [ngClass]="(commentsActive) ? 'col-md-8' : 'col-md-12'">
+            <kendo-tabstrip [tabPosition]="tabPosition">
+                        <kendo-tabstrip-tab i18n-title="@@DisplayLabelPropertyGroup_Project" title="Project" [selected]="true">
+                            <ng-template kendoTabContent>
+                                <div class="wy-one-entity-readonly" *ngIf="readonly; else editable">
+                                            <div 
+                                                title="Name"
+                                                i18n-title="@@TitleProperty_Name"
+                                                class="wy-cls-property-name form-group row">
+                                                <label class="col-md-2 control-label">
+                                                    <ng-container i18n="@@DisplayLabelProperty_Name">Name</ng-container>
+                                                </label>
+                                                <div class="col-md-10 wy-property-value">
+                                                        <div>{{ editForm.get('Name').value }}</div>
+                                                </div>
+                                            </div>
+                                            <div 
+                                                title="Status"
+                                                i18n-title="@@TitleProperty_Status"
+                                                class="wy-cls-property-status form-group row">
+                                                <label class="col-md-2 control-label">
+                                                    <ng-container i18n="@@DisplayLabelProperty_Status">Status</ng-container>
+                                                </label>
+                                                <div class="col-md-10 wy-property-value">
+                                                        <ng-container
+                                                            [ngTemplateOutlet]="enumStatus" 
+                                                            [ngTemplateOutletContext]="{value: editForm.get('Status').value}">
+                                                        </ng-container>
+                                                </div>
+                                            </div>
+                                            <div 
+                                                title="Created By"
+                                                i18n-title="@@TitleProperty_CreatedBy"
+                                                class="wy-cls-property-createdby form-group row">
+                                                <label class="col-md-2 control-label">
+                                                    <ng-container i18n="@@DisplayLabelProperty_CreatedBy">Created By</ng-container>
+                                                </label>
+                                                <div class="col-md-10 wy-property-value">
+                                                        <div>{{ editForm.get('CreatedBy').value }}</div>
+                                                </div>
+                                            </div>
+                                            <div 
+                                                title="Picture"
+                                                i18n-title="@@TitleProperty_Picture"
+                                                class="wy-cls-property-picture form-group row">
+                                                <label class="col-md-2 control-label">
+                                                    <ng-container i18n="@@DisplayLabelProperty_Picture">Picture</ng-container>
+                                                </label>
+                                                <div class="col-md-10 wy-property-value">
+                                                        <div>{{ editForm.get('Picture').value }}</div>
+                                                </div>
+                                            </div>
+                                            <div 
+                                                title="Project Location"
+                                                i18n-title="@@TitleProperty_ProjectLocation"
+                                                class="wy-cls-property-projectlocation form-group row">
+                                                <label class="col-md-2 control-label">
+                                                    <ng-container i18n="@@DisplayLabelProperty_ProjectLocation">Project Location</ng-container>
+                                                </label>
+                                                <div class="col-md-10 wy-property-value">
+                                                        <ng-container
+                                                            [ngTemplateOutlet]="enumProjectLocation" 
+                                                            [ngTemplateOutletContext]="{value: editForm.get('ProjectLocation').value}">
+                                                        </ng-container>
+                                                </div>
+                                            </div>
+                                            <div 
+                                                title="Comments"
+                                                i18n-title="@@TitleProperty_Comments"
+                                                class="wy-cls-property-comments form-group row">
+                                                <label class="col-md-2 control-label">
+                                                    <ng-container i18n="@@DisplayLabelProperty_Comments">Comments</ng-container>
+                                                </label>
+                                                <div class="col-md-10 wy-property-value">
+                                                        <div [innerHTML]="us.formatMultilineText(editForm.get('Comments').value)"></div>
+                                                </div>
+                                            </div>
+                                            <div 
+                                                title="Project Files"
+                                                i18n-title="@@TitleProperty_ProjectFiles"
+                                                class="wy-cls-property-projectfiles form-group row">
+                                                <label class="col-md-2 control-label">
+                                                    <ng-container i18n="@@DisplayLabelProperty_ProjectFiles">Project Files</ng-container>
+                                                </label>
+                                                <div class="col-md-10 wy-property-value">
+                                                        <wy-blob-box
+                                                            [largeThumbnail]="true" 
+                                                            [boxId]="editForm.get('ProjectFiles').value">
+                                                        </wy-blob-box>
+                                                </div>
+                                            </div>
+                                </div>
+                                <ng-template #editable>
+                                    <div class="wy-one-entity-editable">
+                                                <div 
+                                                    title="Name"
+                                                    i18n-title="@@TitleProperty_Name"
+                                                    class="wy-cls-property-name form-group row">
+                                                    <label class="col-md-2 control-label">
+                                                        <ng-container i18n="@@DisplayLabelProperty_Name">Name</ng-container>
+                                                        (<span class="wy-is-required">*</span>)
+                                                    </label>
+                                                    <div class="col-md-10 col-fill wy-property-value">
+                                                            <input
+                                                                type="text"
+                                                                required
+                                                                wyEnableAutofocus
+                                                                kendoTextBox
+                                                                placeholder="Name"
+                                                                i18n-placeholder="@@PlaceholderProperty_Name"
+                                                                formControlName="Name" />
+                                                            <ng-container *ngIf="editForm.get('Name')">
+                                                                <div class="wy-validation-message alert alert-danger" *ngIf="editForm.get('Name').invalid && (isFormValidationActive || editForm.get('Name').dirty || editForm.get('Name').touched)">
+                                                                        <div *ngIf="editForm.get('Name').errors.required" i18n="@@IsRequired">
+                                                                            This field is required.
+                                                                        </div>
+                                                                </div>
+                                                            </ng-container>
+                                                    </div>
+                                                </div>
+                                                <div 
+                                                    title="Status"
+                                                    i18n-title="@@TitleProperty_Status"
+                                                    class="wy-cls-property-status form-group row">
+                                                    <label class="col-md-2 control-label">
+                                                        <ng-container i18n="@@DisplayLabelProperty_Status">Status</ng-container>
+                                                    </label>
+                                                    <div class="col-md-10 col-fill wy-property-value">
+                                                            <kendo-dropdownlist
+                                                                formControlName="Status"
+                                                                [disabled]="false"
+                                                                style="width: 33%;"
+                                                                [data]="properties.Status.enum"
+                                                                [textField]="'value'"
+                                                                [valueField]="'value'"
+                                                                [valuePrimitive]="true"
+                                                                [itemDisabled]="dropDownItemDisabled"
+                                                                required>
+                                                                <ng-template kendoDropDownListItemTemplate kendoDropDownListValueTemplate let-item>
+                                                                    <ng-container
+                                                                        [ngTemplateOutlet]="enumStatus" 
+                                                                        [ngTemplateOutletContext]="{value: item?.value}">
+                                                                    </ng-container>
+                                                                </ng-template>
+                                                            </kendo-dropdownlist>
+                                                    </div>
+                                                </div>
+                                                <div 
+                                                    title="Created By"
+                                                    i18n-title="@@TitleProperty_CreatedBy"
+                                                    class="wy-cls-property-createdby form-group row">
+                                                    <label class="col-md-2 control-label">
+                                                        <ng-container i18n="@@DisplayLabelProperty_CreatedBy">Created By</ng-container>
+                                                        (<span class="wy-is-required">*</span>)
+                                                    </label>
+                                                    <div class="col-md-10 col-fill wy-property-value">
+                                                            <input
+                                                                type="text"
+                                                                required
+                                                                kendoTextBox
+                                                                placeholder="Created By"
+                                                                i18n-placeholder="@@PlaceholderProperty_CreatedBy"
+                                                                formControlName="CreatedBy" />
+                                                            <ng-container *ngIf="editForm.get('CreatedBy')">
+                                                                <div class="wy-validation-message alert alert-danger" *ngIf="editForm.get('CreatedBy').invalid && (isFormValidationActive || editForm.get('CreatedBy').dirty || editForm.get('CreatedBy').touched)">
+                                                                        <div *ngIf="editForm.get('CreatedBy').errors.required" i18n="@@IsRequired">
+                                                                            This field is required.
+                                                                        </div>
+                                                                </div>
+                                                            </ng-container>
+                                                    </div>
+                                                </div>
+                                                <div 
+                                                    title="Picture"
+                                                    i18n-title="@@TitleProperty_Picture"
+                                                    class="wy-cls-property-picture form-group row">
+                                                    <label class="col-md-2 control-label">
+                                                        <ng-container i18n="@@DisplayLabelProperty_Picture">Picture</ng-container>
+                                                    </label>
+                                                    <div class="col-md-10 col-fill wy-property-value">
+                                                            <input
+                                                                type="text"
+                                                                kendoTextBox
+                                                                placeholder="Picture"
+                                                                i18n-placeholder="@@PlaceholderProperty_Picture"
+                                                                formControlName="Picture" />
+                                                    </div>
+                                                </div>
+                                                <div 
+                                                    title="Project Location"
+                                                    i18n-title="@@TitleProperty_ProjectLocation"
+                                                    class="wy-cls-property-projectlocation form-group row">
+                                                    <label class="col-md-2 control-label">
+                                                        <ng-container i18n="@@DisplayLabelProperty_ProjectLocation">Project Location</ng-container>
+                                                    </label>
+                                                    <div class="col-md-10 col-fill wy-property-value">
+                                                            <kendo-dropdownlist
+                                                                formControlName="ProjectLocation"
+                                                                [disabled]="false"
+                                                                style="width: 33%;"
+                                                                [data]="properties.ProjectLocation.enum"
+                                                                [textField]="'value'"
+                                                                [valueField]="'value'"
+                                                                [valuePrimitive]="true"
+                                                                [itemDisabled]="dropDownItemDisabled"
+                                                                required>
+                                                                <ng-template kendoDropDownListItemTemplate kendoDropDownListValueTemplate let-item>
+                                                                    <ng-container
+                                                                        [ngTemplateOutlet]="enumProjectLocation" 
+                                                                        [ngTemplateOutletContext]="{value: item?.value}">
+                                                                    </ng-container>
+                                                                </ng-template>
+                                                            </kendo-dropdownlist>
+                                                    </div>
+                                                </div>
+                                                <div 
+                                                    title="Comments"
+                                                    i18n-title="@@TitleProperty_Comments"
+                                                    class="wy-cls-property-comments form-group row">
+                                                    <label class="col-md-2 control-label">
+                                                        <ng-container i18n="@@DisplayLabelProperty_Comments">Comments</ng-container>
+                                                    </label>
+                                                    <div class="col-md-10 col-fill wy-property-value">
+                                                            <textarea 
+                                                                kendoTextArea
+                                                                placeholder="Comments"
+                                                                i18n-placeholder="@@PlaceholderProperty_Comments"
+                                                                rows="5"
+                                                                formControlName="Comments">
+                                                            </textarea>
+                                                    </div>
+                                                </div>
+                                                <div 
+                                                    title="Project Files"
+                                                    i18n-title="@@TitleProperty_ProjectFiles"
+                                                    class="wy-cls-property-projectfiles form-group row">
+                                                    <label class="col-md-2 control-label">
+                                                        <ng-container i18n="@@DisplayLabelProperty_ProjectFiles">Project Files</ng-container>
+                                                    </label>
+                                                    <div class="col-md-10 col-fill wy-property-value">
+                                                            <wy-blob-upload
+                                                                [entityId]="getEntityId()"
+                                                                controlName="ProjectFiles"
+                                                                [multiple]="true">
+                                                            </wy-blob-upload>
+                                                    </div>
+                                                </div>
+                                    </div>
+                                </ng-template>
+                            </ng-template>
+                        </kendo-tabstrip-tab>
+                        <kendo-tabstrip-tab i18n-title="@@DisplayLabelPropertyGroup_Notes" title="Notes" [selected]="">
+                            <ng-template kendoTabContent>
+                                <div class="wy-one-entity-readonly" *ngIf="readonly; else editable">
+                                            <div 
+                                                title="Notes"
+                                                i18n-title="@@TitleProperty_Notes"
+                                                class="wy-cls-property-notes form-group row">
+                                                <label class="col-md-2 control-label">
+                                                    <ng-container i18n="@@DisplayLabelProperty_Notes">Notes</ng-container>
+                                                </label>
+                                                <div class="col-md-10 wy-property-value">
+                                                        <div [innerHTML]="editForm.get('Notes').value | safeHtml"></div>
+                                                </div>
+                                            </div>
+                                </div>
+                                <ng-template #editable>
+                                    <div class="wy-one-entity-editable">
+                                                <div 
+                                                    title="Notes"
+                                                    i18n-title="@@TitleProperty_Notes"
+                                                    class="wy-cls-property-notes form-group row">
+                                                    <label class="col-md-2 control-label">
+                                                        <ng-container i18n="@@DisplayLabelProperty_Notes">Notes</ng-container>
+                                                    </label>
+                                                    <div class="col-md-10 col-fill wy-property-value">
+                                                                <textarea
+                                                                    kendoTextArea
+                                                                    rows="5"
+                                                                    formControlName="Notes">
+                                                                </textarea>
+                                                    </div>
+                                                </div>
+                                    </div>
+                                </ng-template>
+                            </ng-template>
+                        </kendo-tabstrip-tab>
+                        <kendo-tabstrip-tab i18n-title="@@DisplayLabelPropertyGroup_Pdf" title="Pdf" [selected]="">
+                            <ng-template kendoTabContent>
+                                <div class="wy-one-entity-readonly" *ngIf="readonly; else editable">
+                                            <div 
+                                                title="Pdf Document"
+                                                i18n-title="@@TitleProperty_PdfDocument"
+                                                class="wy-cls-property-pdfdocument form-group row">
+                                                <label class="col-md-2 control-label">
+                                                    <ng-container i18n="@@DisplayLabelProperty_PdfDocument">Pdf Document</ng-container>
+                                                </label>
+                                                <div class="col-md-10 wy-property-value">
+                                                        <wy-blob-viewer [boxId]="editForm.get('PdfDocument').value"></wy-blob-viewer>
+                                                </div>
+                                            </div>
+                                </div>
+                                <ng-template #editable>
+                                    <div class="wy-one-entity-editable">
+                                                <div 
+                                                    title="Pdf Document"
+                                                    i18n-title="@@TitleProperty_PdfDocument"
+                                                    class="wy-cls-property-pdfdocument form-group row">
+                                                    <label class="col-md-2 control-label">
+                                                        <ng-container i18n="@@DisplayLabelProperty_PdfDocument">Pdf Document</ng-container>
+                                                    </label>
+                                                    <div class="col-md-10 col-fill wy-property-value">
+                                                            <wy-blob-upload
+                                                                [entityId]="getEntityId()"
+                                                                controlName="PdfDocument"
+                                                                [multiple]="false"
+                                                                allowedExtensions=".pdf">
+                                                            </wy-blob-upload>
+                                                    </div>
+                                                </div>
+                                    </div>
+                                </ng-template>
+                            </ng-template>
+                        </kendo-tabstrip-tab>
+                                <kendo-tabstrip-tab i18n-title="@@DisplayLabelProperty_TodoItems" title="Todo Items" [disabled]="isNew">
+                                    <ng-template kendoTabContent>
+                                        <wy-component-defaultgrid_todoitem
+                                            [newEntityOwner]="editForm"
+                                            newEntityOwnerClassName="Project"
+                                            [newEntityDefaults]="{ ProjectId: getEntityId() }"
+                                            filter="ProjectId eq {{getEntityId()}}">
+                                        </wy-component-defaultgrid_todoitem>
+                                    </ng-template>
+                                </kendo-tabstrip-tab>
+            </kendo-tabstrip>
+        </div>
+        <div *ngIf="commentsActive" class="col-md-4 col-fill">
+            <h3 class="wy-hdr">
+                <ng-container i18n="@@Comments">Comments</ng-container>
+                <ng-container>
+                    - {{ editForm.get('Name').value }}
+                </ng-container>
+            </h3>
+            <wy-comment
+                [socialKey]="'Project$' + getEntityId()">
+            </wy-comment>
+        </div>
+    </div>
+</form>
+        <ng-template #enumStatus let-value="value">
+            <div class="wy-enum-value" *ngIf="value == 2">
+                    <img class="wy-thumbnail" src="https://images.pexels.com/photos/942304/pexels-photo-942304.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=100&w=100" i18n-title="@@DisplayLabelEnumValue_Closed" title="Closed" />
+            </div>
+            <div class="wy-enum-value" *ngIf="value == 0">
+                    <img class="wy-thumbnail" src="https://images.pexels.com/photos/373076/pexels-photo-373076.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=100&w=100" i18n-title="@@DisplayLabelEnumValue_New" title="New" />
+            </div>
+            <div class="wy-enum-value" *ngIf="value == 1">
+                    <img class="wy-thumbnail" src="https://images.pexels.com/photos/1036857/pexels-photo-1036857.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=100&w=100" i18n-title="@@DisplayLabelEnumValue_Open" title="Open" />
+            </div>
+        </ng-template>
+        <ng-template #enumProjectLocation let-value="value">
+            <div class="wy-enum-value" *ngIf="value == 3">
+                    <div style="display: inline-block; height: 16px; width: 16px;" [style.backgroundColor]="'#0000ff'"></div>
+                    <span class="wy-label-indent" i18n="@@DisplayLabelEnumValue_East">East</span>
+            </div>
+            <div class="wy-enum-value" *ngIf="value == 2">
+                    <div style="display: inline-block; height: 16px; width: 16px;" [style.backgroundColor]="'#0000ff'"></div>
+                    <span class="wy-label-indent" i18n="@@DisplayLabelEnumValue_North">North</span>
+            </div>
+            <div class="wy-enum-value" *ngIf="value == 1">
+                    <div style="display: inline-block; height: 16px; width: 16px;" [style.backgroundColor]="'#0000ff'"></div>
+                    <span class="wy-label-indent" i18n="@@DisplayLabelEnumValue_South">South</span>
+            </div>
+            <div class="wy-enum-value" *ngIf="value == 0">
+                    <div style="display: inline-block; height: 16px; width: 16px;" [style.backgroundColor]="'#0000ff'"></div>
+                    <span class="wy-label-indent" i18n="@@DisplayLabelEnumValue_West">West</span>
+            </div>
+        </ng-template>

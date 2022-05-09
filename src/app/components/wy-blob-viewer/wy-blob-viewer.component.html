@@ -1,0 +1,9 @@
+﻿<div *ngIf="blob" class="wy-blob-viewer">
+    <div *ngIf="blob.IsPdf; else standardViewer">
+        <ng2-pdfjs-viewer #pdfViewer>
+        </ng2-pdfjs-viewer>
+    </div>
+    <ng-template #standardViewer>
+        <iframe [src]="getBlobUri(blob.Name, blob.BoxId) | safeUrl"></iframe>
+    </ng-template>
+</div>

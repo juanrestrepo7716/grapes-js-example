@@ -1,0 +1,8 @@
+<div class="wy-component-todoitemscomponent">
+    <h1>
+    My Todo list (NOT finished)
+</h1>
+<div *ngFor="let item of todoItems" class="tdo-item">
+    {{ item.Name }} => {{ item.Owner?.Name }}
+</div>
+</div>

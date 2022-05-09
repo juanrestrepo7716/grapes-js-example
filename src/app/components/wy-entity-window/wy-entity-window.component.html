@@ -1,0 +1,53 @@
+<!--::Bag::Default
+-->
+<ng-template cdkPortal>
+    <kendo-window [width]="windowWidth" [height]="windowHeight" [top]="windowTop" [left]="windowLeft"
+        (close)="cancelHandler()" class="wy-entity-window">
+        <kendo-window-titlebar>
+            <div class="k-window-title">
+                <div class="wy-coin" style="margin-right: 10px;">
+                    <i [title]="title" [style.backgroundColor]="color" class="{{ icon }} fa-fw"></i>
+                </div>
+                <div class="wy-window-title">
+                    <ng-container *ngIf="readonly" i18n="@@View">
+                        View
+                    </ng-container>
+                    <ng-container *ngIf="!readonly && isNew" i18n="@@Create">
+                        Create
+                    </ng-container>
+                    <ng-container *ngIf="!readonly && !isNew" i18n="@@Edit">
+                        Edit
+                    </ng-container>
+                    <ng-container> - </ng-container>
+                    <ng-container>
+                        {{ title }}
+                    </ng-container>
+                    <ng-container *ngIf="entity && entity['Name']">
+                        - {{ entity.Name }}
+                    </ng-container>
+                </div>
+            </div>
+            <button *ngIf="!readonly" kendoButton (click)="saveHandler({ close: false })" [icon]="'save'" [look]="'bare'"></button>
+            <button kendoWindowMaximizeAction></button>
+            <button kendoWindowRestoreAction></button>
+            <button kendoWindowCloseAction></button>
+        </kendo-window-titlebar>
+        <div class="wy-entity-window-contents">
+            <ng-content></ng-content>
+        </div>
+        <div class="k-dialog-buttongroup k-dialog-button-layout-stretched">
+            <button *ngIf="readonly" kendoButton [primary]="true" (click)="cancelHandler()" i18n="@@Close">
+                <i class="fas fa-times"></i>
+                Close
+            </button>
+            <button *ngIf="!readonly" kendoButton (click)="cancelHandler()">
+                <i class="fas fa-ban"></i>
+                <span class="wy-label-indent" i18n="@@Cancel">Cancel</span>
+            </button>
+            <button *ngIf="!readonly" kendoButton [primary]="true" (click)="saveHandler({ close: true })">
+                <i class="fas fa-check wy-green"></i>
+                <span class="wy-label-indent" i18n="@@Save">Save</span>
+            </button>
+        </div>
+    </kendo-window>
+</ng-template>

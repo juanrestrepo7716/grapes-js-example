@@ -1,0 +1,28 @@
+//::Bag::Default
+.wy-entity-card {
+    display: table-cell;
+    padding-right: 8px;
+    padding-bottom: 8px;
+    cursor: pointer;
+    .wy-card-media-image {
+        height: 250px;
+        background-size: cover;
+        background-color: #efefef;
+    }
+    kendo-card {
+        width: 250px !important;
+    }
+    &.wy-entity-card-selected {
+        kendo-card {
+            background-color: #efefef;
+        }
+    }
+}
+@media (max-width: 568px) {
+    .wy-entity-card {
+        display: block;
+        kendo-card {
+            width: 100% !important;
+        }
+    }
+}

@@ -1,0 +1,11 @@
+﻿<div class="wy-blob-box-item" *ngFor="let blob of blobs">
+    <div *ngIf="blob.IsImage">
+        <wy-image-viewer
+            [largeThumbnail]="largeThumbnail"
+            [title]="blob.Name"
+            [size]="blob.Size"
+            [src]="getBlobUri(blob.Name, blob.BoxId)">
+        </wy-image-viewer>
+    </div>
+    <div [innerHTML]="getDownloadLink(blob.Name, blob.Size, blob.BoxId) | safeHtml"></div>
+</div>

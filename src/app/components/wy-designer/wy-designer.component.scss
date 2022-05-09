@@ -1,0 +1,23 @@
+﻿.wy-designer {
+    width: 100%;
+    height: calc(100vh - 335px);
+    border: none;
+
+    .gjs-one-bg {
+        background-color: #414656;
+    }
+
+    .gjs-two-color {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .gjs-three-bg {
+        background-color: #0269c2;
+        color: white;
+    }
+
+    .gjs-four-color,
+    .gjs-four-color-h:hover {
+        color: #0269c2;
+    }
+}

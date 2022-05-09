@@ -1,0 +1,807 @@
+<!--::Bag::Default
+-->
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template" target-language="en">
+    <body>
+            <trans-unit id="Create">
+              <target>Create</target>
+            </trans-unit>
+            <trans-unit id="Cancel">
+              <target>Cancel</target>
+            </trans-unit>
+            <trans-unit id="New">
+              <target>New</target>
+            </trans-unit>
+            <trans-unit id="Edit">
+              <target>Edit</target>
+            </trans-unit>
+            <trans-unit id="View">
+              <target>View</target>
+            </trans-unit>
+            <trans-unit id="Delete">
+              <target>Delete</target>
+            </trans-unit>
+            <trans-unit id="Save">
+              <target>Save</target>
+            </trans-unit>
+            <trans-unit id="Id">
+              <target>Id</target>
+            </trans-unit>
+            <trans-unit id="Confirm">
+              <target>Confirm</target>
+            </trans-unit>
+            <trans-unit id="DeleteConfirmation">
+              <target>Are you sure you want to delete this item?</target>
+            </trans-unit>
+            <trans-unit id="Close">
+              <target>Close</target>
+            </trans-unit>
+            <trans-unit id="Select">
+              <target>Select</target>
+            </trans-unit>
+            <trans-unit id="SelectFile">
+              <target>Select file</target>
+            </trans-unit>
+            <trans-unit id="RemoveFile">
+              <target>Remove file</target>
+            </trans-unit>
+            <trans-unit id="SelectImage">
+              <target>Select image</target>
+            </trans-unit>
+            <trans-unit id="RemoveImage">
+              <target>Remove image</target>
+            </trans-unit>
+            <trans-unit id="PleaseWait">
+              <target>Please wait...</target>
+            </trans-unit>
+            <trans-unit id="Succeeded">
+              <target>Succeeded</target>
+            </trans-unit>
+            <trans-unit id="Failed">
+              <target>Failed</target>
+            </trans-unit>
+            <trans-unit id="NoFileSelected">
+              <target>No file selected.</target>
+            </trans-unit>
+            <trans-unit id="NoImageSelected">
+              <target>No image selected.</target>
+            </trans-unit>
+            <trans-unit id="YourRequestIsBeingProcessed">
+              <target>Your request is being processed...</target>
+            </trans-unit>
+            <trans-unit id="YourRequestCompletedSuccessfully">
+              <target>Your request completed successfully.</target>
+            </trans-unit>
+            <trans-unit id="YourRequestFailed">
+              <target>Your request failed.</target>
+            </trans-unit>
+            <trans-unit id="QuickSearch">
+              <target>quick search</target>
+            </trans-unit>
+            <trans-unit id="ExportExcel">
+              <target>Export</target>
+            </trans-unit>
+            <trans-unit id="ExportPDF">
+              <target>PDF</target>
+            </trans-unit>
+            <trans-unit id="Loading">
+              <target>Loading</target>
+            </trans-unit>
+            <trans-unit id="GridConfiguration">
+              <target>Configure</target>
+            </trans-unit>
+            <trans-unit id="Columns">
+              <target>Columns</target>
+            </trans-unit>
+            <trans-unit id="Copy">
+              <target>Copy</target>
+            </trans-unit>
+            <trans-unit id="Reset">
+              <target>Reset</target>
+            </trans-unit>
+            <trans-unit id="InvalidDataPleaseCorrect">
+              <target>The form contains invalid data. Please correct before saving.</target>
+            </trans-unit>
+            <trans-unit id="Filter">
+              <target>Filter</target>
+            </trans-unit>
+            <trans-unit id="MoveUp">
+              <target>Move up</target>
+            </trans-unit>
+            <trans-unit id="MoveDown">
+              <target>Move down</target>
+            </trans-unit>
+            <trans-unit id="BackgroundError">
+              <target>An error occurred in the background. Contact your administrator for details.</target>
+            </trans-unit>
+            <trans-unit id="DataSaved">
+              <target>Data successfully saved.</target>
+            </trans-unit>
+            <trans-unit id="DataNotSaved">
+              <target>There was a problem saving the data.</target>
+            </trans-unit>
+            <trans-unit id="AuthenticationFailed">
+              <target>Could not authenticate. Please contact your system administrator.</target>
+            </trans-unit>
+            <trans-unit id="Group">
+              <target>Group by</target>
+            </trans-unit>
+            <trans-unit id="More">
+              <target>More</target>
+            </trans-unit>
+            <trans-unit id="SwitchGridViewMode">
+              <target>Switch grid view mode</target>
+            </trans-unit>
+            <trans-unit id="NoRecordsAvailable">
+              <target>No records available.</target>
+            </trans-unit>
+            <trans-unit id="Pivot">
+              <target>Pivot</target>
+            </trans-unit>
+            <trans-unit id="OpenRecycleBin">
+              <target>Recycle bin</target>
+            </trans-unit>
+            <trans-unit id="RecycleBin">
+              <target>Recycle bin</target>
+            </trans-unit>
+            <trans-unit id="RecycleBinRestoreConfirmation">
+              <target>Restore this item from the recycle bin?</target>
+            </trans-unit>
+            <trans-unit id="Restore">
+              <target>Restore</target>
+            </trans-unit>
+            <trans-unit id="CannotDisplayMapNoCardData">
+              <target>Cannot display map. No card data found.</target>
+            </trans-unit>
+            <trans-unit id="IsRequired">
+              <target>This field is required.</target>
+            </trans-unit>
+            <trans-unit id="ShouldContainMinimumOfCharacters">
+              <target>This field should contain a minimum of ... characters.</target>
+            </trans-unit>
+            <trans-unit id="CanOnlyContainCharacters">
+              <target>This field can only contain ... characters.</target>
+            </trans-unit>
+            <trans-unit id="ContainsAnInvalidValue">
+              <target>This field contains an invalid value.</target>
+            </trans-unit>
+            <trans-unit id="Comments">
+              <target>Comments</target>
+            </trans-unit>
+            <trans-unit id="AppLauncherTitle">
+              <target>App Launcher</target>
+            </trans-unit>
+            <trans-unit id="Error404">
+              <target>Oops! You are lost.</target>
+            </trans-unit>
+            <trans-unit id="ErrorPageNotFound">
+              <target>The page you are looking for was not found.</target>
+            </trans-unit>
+            <trans-unit id="GoHome">
+              <target>Go home</target>
+            </trans-unit>
+            <trans-unit id="Error500">
+              <target>Houston, we have a problem!</target>
+            </trans-unit>
+            <trans-unit id="ErrorPageNotAvailable">
+              <target>The page you are looking for is temporarily unavailable.</target>
+            </trans-unit>
+            <trans-unit id="AppDownload">
+              <target>App download</target>
+            </trans-unit>
+            <trans-unit id="DownloadAppForAndroid">
+              <target>Download app for Android.</target>
+            </trans-unit>
+            <trans-unit id="Download">
+              <target>Download</target>
+            </trans-unit>
+            <trans-unit id="Login">
+              <target>Login</target>
+            </trans-unit>
+            <trans-unit id="SignInToYourAccount">
+              <target>Sign In to your account</target>
+            </trans-unit>
+            <trans-unit id="Username">
+              <target>Username</target>
+            </trans-unit>
+            <trans-unit id="Password">
+              <target>Password</target>
+            </trans-unit>
+            <trans-unit id="StaySignedIn">
+              <target>Stay signed in</target>
+            </trans-unit>
+            <trans-unit id="SelectTenant">
+              <target>Select your tenant</target>
+            </trans-unit>
+            <trans-unit id="EnterVerificationCode">
+              <target>Please enter your verification code</target>
+            </trans-unit>
+            <trans-unit id="VerificationCode">
+              <target>Verification code</target>
+            </trans-unit>
+            <trans-unit id="Verify">
+              <target>Verify</target>
+            </trans-unit>
+            <trans-unit id="NoInternetConnection">
+              <target>🔌 You are not connected to the internet. Please check your connection and try again.</target>
+            </trans-unit>
+            <trans-unit id="AuthenticatingPleaseWait">
+              <target>🔐 Authenticating... Please wait...</target>
+            </trans-unit>
+            <trans-unit id="UploadingChangesPleaseWait">
+              <target>⌛ Uploading changes... Please wait...</target>
+            </trans-unit>
+            <trans-unit id="UploadedImage">
+              <target>⬆️ Uploaded image: </target>
+            </trans-unit>
+            <trans-unit id="DownloadedImage">
+              <target>⬇️ Downloaded image: </target>
+            </trans-unit>
+            <trans-unit id="DownloadSuccessfullPleaseWaitWhileWeSync">
+              <target>🌍 Download successful. Please wait while we sync all changes...</target>
+            </trans-unit>
+            <trans-unit id="SyncFinished">
+              <target>✔️ Synchronization finished. Message: </target>
+            </trans-unit>
+            <trans-unit id="SyncError">
+              <target>⚠️ Synchronization error. Message: </target>
+            </trans-unit>
+            <trans-unit id="SyncException">
+              <target>❌ Synchronization exception. Details: </target>
+            </trans-unit>
+            <trans-unit id="ClearingPleaseWait">
+              <target>🗑 Clearing... Please wait...</target>
+            </trans-unit>
+            <trans-unit id="ClearFinished">
+              <target>✔️ Clear finished.</target>
+            </trans-unit>
+            <trans-unit id="ClearDataError">
+              <target>❌ Clear data error. Details: </target>
+            </trans-unit>
+            <trans-unit id="SyncFilesAndImages">
+              <target>Synchronize files and images</target>
+            </trans-unit>
+            <trans-unit id="FullSync">
+              <target>Full sync</target>
+            </trans-unit>
+            <trans-unit id="Synchronize">
+              <target>🔄 Synchronize</target>
+            </trans-unit>
+            <trans-unit id="EraseAllOfflineData">
+              <target>Erase all offline data. 🗑</target>
+            </trans-unit>
+            <trans-unit id="LetsSynchronizeMessage">
+              <target>pending changes. Do you want to synchronize? It will not take long. Tenant: </target>
+            </trans-unit>
+            <trans-unit id="ErrorLoadingData">
+              <target>❌ Error loading data. Details: </target>
+            </trans-unit>
+            <trans-unit id="Colums">
+              <target>Colums</target>
+            </trans-unit>
+            <trans-unit id="Cards">
+              <target>Cards</target>
+            </trans-unit>
+            <trans-unit id="SyncRequiredMessage">
+              <target>👉 Synchronization is required before you can continue with the app. It will not take long. Tenant: </target>
+            </trans-unit>
+            <trans-unit id="EntityStatusError">
+              <target>❌ Error, perform full sync</target>
+            </trans-unit>
+            <trans-unit id="DeleteAllLocalDataConfirmation">
+              <target>Are you sure you want to delete all local data and lose your local changes?</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelClass_NamedEntity">
+              <target>Named Entity</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelPluralClass_NamedEntity">
+              <target>Named Entities</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelPropertyGroup_NamedEntity">
+              <target>Named Entity</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelClass_TodoItem">
+              <target>Todo Item</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelPluralClass_TodoItem">
+              <target>Todo Items</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelPropertyGroup_TodoItem">
+              <target>Todo Item</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelClass_Project">
+              <target>Project</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelPluralClass_Project">
+              <target>Projects</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelPropertyGroup_Project">
+              <target>Project</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelClass_User">
+              <target>User</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelPluralClass_User">
+              <target>Users</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelPropertyGroup_User">
+              <target>User</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelClass_Action">
+              <target>Action</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelPluralClass_Action">
+              <target>Actions</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelPropertyGroup_Action">
+              <target>Action</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelClass_Message">
+              <target>Message</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelPluralClass_Message">
+              <target>Messages</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelPropertyGroup_Message">
+              <target>Message</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelClass_SocialComment">
+              <target>Social Comment</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelPluralClass_SocialComment">
+              <target>Social Comments</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelPropertyGroup_SocialComment">
+              <target>Social Comment</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelClass_SocialReaction">
+              <target>Social Reaction</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelPluralClass_SocialReaction">
+              <target>Social Reactions</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelPropertyGroup_SocialReaction">
+              <target>Social Reaction</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelOperation_Finish">
+              <target>Finish</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelOperation_Error">
+              <target>Error</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelOperation_Test">
+              <target>Test</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelPropertyGroup_">
+              <target></target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelPropertyGroup_Notes">
+              <target>Notes</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelPropertyGroup_Other">
+              <target>Other</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelPropertyGroup_Details">
+              <target>Details</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelPropertyGroup_Pdf">
+              <target>Pdf</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelBlendTemplate_UserStuff">
+              <target>User Stuff</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelMenuItem_TodoItems">
+              <target>Todo Items</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelMenuItem_Project">
+              <target>Project</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelMenuItem_System">
+              <target>System</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelMenuItem_404">
+              <target>404</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelMenuItem_ManageFiles">
+              <target>Manage Files</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelMenuItem_Utils">
+              <target>Utils</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelMenuItem_Users">
+              <target>Users</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelMenuItem_Demo">
+              <target>Demo</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelMenuItem_Reports">
+              <target>Reports</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelMenuItem_Social">
+              <target>Social</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelMenuItem_Projects">
+              <target>Projects</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelPage_Demo">
+              <target>Demo</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelPage_Dashboard">
+              <target>Dashboard</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelPage_Reports">
+              <target>Reports</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelEnumValue_High">
+              <target>High</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelEnumValue_Medium">
+              <target>Medium</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelEnumValue_Low">
+              <target>Low</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelEnumValue_New">
+              <target>New</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelEnumValue_Open">
+              <target>Open</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelEnumValue_Closed">
+              <target>Closed</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelEnumValue_West">
+              <target>West</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelEnumValue_South">
+              <target>South</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelEnumValue_North">
+              <target>North</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelEnumValue_East">
+              <target>East</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelEnumValue_Like">
+              <target>Like</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelEnumValue_Love">
+              <target>Love</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelEnumValue_Dislike">
+              <target>Dislike</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_Name">
+              <target>Name</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_Name">
+              <target>Name</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_Name">
+              <target>Name</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_Name">
+              <target>Name</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_Priority">
+              <target>Priority</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_Priority">
+              <target>Priority</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_Priority">
+              <target>Priority</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_Priority">
+              <target>Priority</target>
+            </trans-unit>
+            <trans-unit id="DescriptionProperty_Priority">
+              <target>How important is it?</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_Pictures">
+              <target>Pictures</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_Pictures">
+              <target>Pictures</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_Pictures">
+              <target>Pictures</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_Pictures">
+              <target>Pictures</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_ProjectFiles">
+              <target>Project Files</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_ProjectFiles">
+              <target>Project Files</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_ProjectFiles">
+              <target>Project Files</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_ProjectFiles">
+              <target>Project Files</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_Status">
+              <target>Status</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_Status">
+              <target>Status</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_Status">
+              <target>Status</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_Status">
+              <target>Status</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_CreatedBy">
+              <target>Created By</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_CreatedBy">
+              <target>Created By</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_CreatedBy">
+              <target>Created By</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_CreatedBy">
+              <target>Created By</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_EmailAddress">
+              <target>Email Address</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_EmailAddress">
+              <target>Email Address</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_EmailAddress">
+              <target>Email Address</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_EmailAddress">
+              <target>Email Address</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_Picture">
+              <target>Picture</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_Picture">
+              <target>Picture</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_Picture">
+              <target>Picture</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_Picture">
+              <target>Picture</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_ProjectLocation">
+              <target>Project Location</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_ProjectLocation">
+              <target>Project Location</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_ProjectLocation">
+              <target>Project Location</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_ProjectLocation">
+              <target>Project Location</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_TodoItems">
+              <target>Todo Items</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_TodoItems">
+              <target>Todo Items</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_TodoItems">
+              <target>Todo Items</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_TodoItems">
+              <target>Todo Items</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_Color">
+              <target>Color</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_Color">
+              <target>Color</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_Color">
+              <target>Color</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_Color">
+              <target>Color</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_Description">
+              <target>Description</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_Description">
+              <target>Description</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_Description">
+              <target>Description</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_Description">
+              <target>Description</target>
+            </trans-unit>
+            <trans-unit id="DescriptionProperty_Description">
+              <target>Please fill in something useful.</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_Created">
+              <target>Created</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_Created">
+              <target>Created</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_Created">
+              <target>Created</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_Created">
+              <target>Created</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_Enabled">
+              <target>Enabled</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_Enabled">
+              <target>Enabled</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_Enabled">
+              <target>Enabled</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_Enabled">
+              <target>Enabled</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_Attachment">
+              <target>Attachment</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_Attachment">
+              <target>Attachment</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_Attachment">
+              <target>Attachment</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_Attachment">
+              <target>Attachment</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_Comments">
+              <target>Comments</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_Comments">
+              <target>Comments</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_Comments">
+              <target>Comments</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_Comments">
+              <target>Comments</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_Contact">
+              <target>Contact</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_Contact">
+              <target>Contact</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_Contact">
+              <target>Contact</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_Contact">
+              <target>Contact</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_MessageContents">
+              <target>Message Contents</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_MessageContents">
+              <target>Message Contents</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_MessageContents">
+              <target>Message Contents</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_MessageContents">
+              <target>Message Contents</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_Notes">
+              <target>Notes</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_Notes">
+              <target>Notes</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_Notes">
+              <target>Notes</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_Notes">
+              <target>Notes</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_Finished">
+              <target>Finished</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_Finished">
+              <target>Finished</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_Finished">
+              <target>Finished</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_Finished">
+              <target>Finished</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_Owner">
+              <target>Owner</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_Owner">
+              <target>Owner</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_Owner">
+              <target>Owner</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_Owner">
+              <target>Owner</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_Project">
+              <target>Project</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_Project">
+              <target>Project</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_Project">
+              <target>Project</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_Project">
+              <target>Project</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_PdfDocument">
+              <target>Pdf Document</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_PdfDocument">
+              <target>Pdf Document</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_PdfDocument">
+              <target>Pdf Document</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_PdfDocument">
+              <target>Pdf Document</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_SocialKey">
+              <target>Social Key</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_SocialKey">
+              <target>Social Key</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_SocialKey">
+              <target>Social Key</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_SocialKey">
+              <target>Social Key</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_UserName">
+              <target>User Name</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_UserName">
+              <target>User Name</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_UserName">
+              <target>User Name</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_UserName">
+              <target>User Name</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_Text">
+              <target>Text</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_Text">
+              <target>Text</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_Text">
+              <target>Text</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_Text">
+              <target>Text</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelProperty_Reaction">
+              <target>Reaction</target>
+            </trans-unit>
+            <trans-unit id="PlaceholderProperty_Reaction">
+              <target>Reaction</target>
+            </trans-unit>
+            <trans-unit id="TitleProperty_Reaction">
+              <target>Reaction</target>
+            </trans-unit>
+            <trans-unit id="DisplayLabelGridColumn_Reaction">
+              <target>Reaction</target>
+            </trans-unit>
+    </body>
+  </file>
+</xliff>

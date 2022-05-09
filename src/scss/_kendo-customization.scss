@@ -1,0 +1,46 @@
+// kendo fixes/changes
+
+.k-button {
+    text-transform: none !important;
+}
+
+// fix ugly search in dropdownlist
+.k-list-filter > .k-textbox {
+    background-color: #fff;
+    border-radius: 0;
+    padding-left: 0;
+}
+
+// scroll tabs horizontal
+.k-tabstrip-top,
+.k-tabstrip-bottom {
+    > .k-tabstrip-items {
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+}
+
+// kendo dropdown buttons item padding
+.k-popup {
+    kendo-button-list {
+        .k-list .k-item,
+        .k-list-optionlabel {
+            padding: 5px;
+            min-width: 120px;
+        }
+    }
+}
+
+.k-numerictextbox {
+    width: 300px;
+}
+
+// fix kendo dropdown height limitation
+.k-dropdown .k-dropdown-wrap .k-input {
+    height: auto !important;
+}
+
+// make sure notifications are always visible
+.k-notification-group {
+    z-index: 20000 !important;
+}

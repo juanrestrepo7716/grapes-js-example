@@ -1,0 +1,42 @@
+<!--::Bag::Default
+-->
+<div class="wy-blob-manager">
+    <wy-quick-search #quickSearch></wy-quick-search>
+    <kendo-upload [multiple]="true" [showFileList]="false" [saveUrl]="uploadSaveUrl"
+        (success)="uploadSuccessEventHandler($event)">
+        <kendo-upload-messages select="Upload...">
+        </kendo-upload-messages>
+    </kendo-upload>
+    <br>
+    <div *ngIf="!blobs" class="sk-wave">
+        <div class="sk-rect sk-rect1"></div>
+        <div class="sk-rect sk-rect2"></div>
+        <div class="sk-rect sk-rect3"></div>
+        <div class="sk-rect sk-rect4"></div>
+        <div class="sk-rect sk-rect5"></div>
+    </div>
+    <div class="row">
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2" *ngFor="let blob of blobs | containsFilter : 'Name' : quickSearch?.search; let i = index">
+            <div class="card" [class.card-inverse]="selectedBlobName == blob.Name" *ngIf="i < showItems">
+                <a (click)="selectBlob(blob)" class="wy-blob-image-link" target="_blank">
+                    <img *ngIf="blob.IsImage" class="card-img-top img-fluid" [src]="getBlobUri(blob)" alt="{{blob.Name}}" />
+                    <i *ngIf="!blob.IsImage" class="fas fa-file" style="font-size: 64px; padding: 5px;"></i>
+                </a>
+                <div>
+                    <p class="card-text">
+                        <a [href]="getBlobUri(blob)" class="wy-blob-text-link" target="_blank">{{blob.Name}}</a>
+                        <strong>{{formatBytes(blob)}}</strong>
+                    </p>
+                    <button (click)="deleteBlob(blob)" class="close" aria-label="Close">
+                        <span style="font-size: 24px;">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div *ngIf="i == showItems">
+                <button (click)="showMore()" kendoButton aria-label="Close">
+                Load more...
+            </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<!--::Bag::Default
+-->
+<div *ngIf="formControl" class="wy-image-picker">
+    <button kendoButton (click)="openBlobPicker()"
+        i18n="@@SelectImage">
+        Select image...
+    </button>
+    &nbsp;
+    <button *ngIf="formControl.value != null" kendoButton
+        (click)="clearBlobReference()" i18n="@@RemoveImage">
+        Remove image
+    </button>
+    <p></p>
+    <div *ngIf="formControl.value != null; else message">
+        <a class="wy-blob-link" [href]="getBlobUri(formControl.value)" target="_blank">
+            <i class="fas fa-image"></i><span class="wy-label-indent">{{formControl.value}}</span>
+        </a>
+        <div *ngIf="enablePictureFocusPoint" class="wy-picture-focus-point-box">
+            <img [src]="getBlobUri(formControl.value)" style="cursor: crosshair;"
+                (click)="setPictureFocusPoint($event)" />
+            <div class="wy-picture-focus-point" [style.left]="getPosXControl().value + '%'"
+                [style.top]="getPosYControl().value + '%'">
+            </div>
+        </div>
+        <wy-image-viewer *ngIf="!enablePictureFocusPoint" [largeThumbnail]="true" [title]="formControl.value"
+            [size]="getSizeControl().value"
+            [src]="getBlobUri(formControl.value)">
+        </wy-image-viewer>
+    </div>
+    <ng-template #message>
+        <div class="alert alert-info" role="alert" i18n="@@NoImageSelected">
+            No image selected.
+        </div>
+    </ng-template>
+    <kendo-dialog [width]="blobDialogWidth" [height]="blobDialogHeight" *ngIf="isBlobPickerActive"
+        (close)="cancelBlobPicker()">
+        <kendo-dialog-titlebar>
+            <ng-container *ngIf="isBlobPickerImagesOnly" i18n="@@SelectImage">Select image
+            </ng-container>
+            <ng-container *ngIf="!isBlobPickerImagesOnly" i18n="@@SelectFile">Select file
+            </ng-container>
+        </kendo-dialog-titlebar>
+        <wy-blob-manager [loadOnlyImages]="isBlobPickerImagesOnly" (blobSelected)="blobSelectedHandler($event)">
+        </wy-blob-manager>
+        <kendo-dialog-actions>
+            <button kendoButton (click)="cancelBlobPicker()" i18n="@@Cancel">Cancel</button>
+            <button kendoButton [primary]="true" (click)="selectBlobPicker()" i18n="@@Select">Select</button>
+        </kendo-dialog-actions>
+    </kendo-dialog>
+</div>

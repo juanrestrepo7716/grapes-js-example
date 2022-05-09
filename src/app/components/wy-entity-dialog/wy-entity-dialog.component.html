@@ -1,0 +1,42 @@
+<!--::Bag::Default
+-->
+<kendo-dialog [width]="dialogWidth" [height]="dialogHeight" (close)="cancelHandler()">
+    <kendo-dialog-titlebar>
+        <div class="wy-coin" style="margin-right: 10px;">
+            <i [title]="title" [style.backgroundColor]="color" class="{{ icon }} fa-fw"></i>
+        </div>
+        <div class="wy-dialog-title">
+            <ng-container *ngIf="readonly" i18n="@@View">
+                View
+            </ng-container>
+            <ng-container *ngIf="!readonly && isNew" i18n="@@Create">
+                Create
+            </ng-container>
+            <ng-container *ngIf="!readonly && !isNew" i18n="@@Edit">
+                Edit
+            </ng-container>
+            <ng-container> - </ng-container>
+            <ng-container>
+                {{ title }}
+            </ng-container>
+            <ng-container *ngIf="entity && entity['Name']">
+                - {{ entity.Name }}
+            </ng-container>
+        </div>
+    </kendo-dialog-titlebar>
+    <ng-content></ng-content>
+    <kendo-dialog-actions>
+        <button *ngIf="readonly" kendoButton [primary]="true" (click)="cancelHandler()" i18n="@@Close">
+            <i class="fas fa-times"></i>
+            Close
+        </button>
+        <button *ngIf="!readonly" kendoButton (click)="cancelHandler()">
+            <i class="fas fa-ban"></i>
+            <span class="wy-label-indent" i18n="@@Cancel">Cancel</span>
+        </button>
+        <button *ngIf="!readonly" kendoButton [primary]="true" (click)="saveHandler({ close: true })">
+            <i class="fas fa-check wy-green"></i>
+            <span class="wy-label-indent" i18n="@@Save">Save</span>
+        </button>
+    </kendo-dialog-actions>
+</kendo-dialog>

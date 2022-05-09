@@ -1,0 +1,254 @@
+// wyStack styles
+body {
+  display: block !important;
+}
+
+html {
+  overflow: hidden;
+}
+
+// add unlimited columns of any size to this row
+.flex-wrap-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.alert {
+  border: none;
+}
+
+// headers
+.wy-hdr {
+  font-size: 1rem;
+  color: #888;
+  text-transform: uppercase;
+}
+
+// remove ugly color for autofill fields
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+}
+
+// scrollbars
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $app-color;
+}
+
+::-webkit-scrollbar-track {
+  background: #fafafa;
+}
+
+// placeholder
+::placeholder {
+  color: #aaa;
+}
+
+// checkbox
+body {
+  input[type="checkbox"] {
+    width: 20px !important;
+    height: 20px;
+    margin: 0;
+    margin-right: 5px;
+    display: block;
+    float: left;
+    position: relative;
+    cursor: pointer;
+  }
+
+  input[type="checkbox"]:after {
+    content: "";
+    vertical-align: middle;
+    text-align: center;
+    line-height: 20px;
+    position: absolute;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    left: 0px;
+    top: 0px;
+    font-size: 18px;
+    font-weight: bold;
+    border: solid 1px rgba(0, 0, 0, 0.42);
+    background: #fff;
+  }
+
+  input[type="checkbox"]:checked:after {
+    background: #fff;
+    font-family: "Font Awesome 5 Pro";
+    content: "\f00c";
+    color: #000;
+  }
+}
+
+.wy-dialog-title,
+.wy-window-title {
+  line-height: 40px;
+}
+
+.wy-dialog-noclose > .k-dialog > .k-dialog-titlebar > .k-dialog-actions {
+  display: none;
+}
+
+// app colors
+.wy-app-color {
+  color: $app-color;
+}
+
+.wy-app-color-important {
+  color: $app-color !important;
+}
+
+.wy-app-color-bg {
+  background-color: $app-color;
+  color: white;
+}
+
+.wy-app-secondary-color {
+  color: $app-secondary-color;
+}
+
+.wy-app-secondary-color-bg {
+  background-color: $app-secondary-color;
+  color: white;
+}
+
+// dynamic translations to use in TypeScript
+.wy-dynamic-translations {
+  display: none;
+}
+
+// tenant
+.wy-tenant {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+// coin
+.wy-coin {
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  margin: 2px;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  display: table;
+  padding: 5px;
+  float: left;
+
+  .fas,
+  .far,
+  .fab {
+    font-size: 20px;
+    color: #fff;
+    background-color: $app-color;
+    border-radius: 50%;
+    margin: auto;
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+.wy-coin-small {
+  transform: scale(0.7);
+}
+
+.wy-svg-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.wy-id {
+  color: gray;
+  font-size: 9pt;
+}
+
+// loading
+.wy-loading {
+  text-align: center;
+  padding: 10px;
+
+  .fas,
+  .far,
+  .fab {
+    font-size: 20px;
+  }
+}
+
+// TODO: replace with Kendo panelbar
+// collapse
+.wy-collapsable {
+  &.card.card-collapsable {
+    margin-bottom: 0.25rem;
+
+    .card-header {
+      cursor: pointer;
+      padding: 0.5rem 0.75rem;
+      border: 0;
+      color: white;
+    }
+
+    .card-header h5:before {
+      font-family: "Font Awesome 5 Pro";
+      content: "\f107";
+      float: left;
+      padding-right: 5px;
+      text-decoration: none;
+    }
+
+    .card-header h5 {
+      font-weight: bold;
+    }
+
+    .card-body {
+      padding: 0.5rem;
+    }
+  }
+
+  &.card.card-collapsable.card-collapsed {
+    .card-header h5:before {
+      content: "\f105";
+    }
+  }
+}
+
+// thumbnails
+.wy-thumbnail-lg {
+  max-height: 300px;
+  max-width: 300px;
+  border: 1px solid #ccc;
+}
+
+.wy-thumbnail {
+  max-height: 100px;
+  max-width: 130px;
+  border: 1px solid #ccc;
+}
+
+// label after icon
+.wy-label-indent {
+  padding-left: 5px;
+}
+
+// property description
+.wy-property-description {
+  clear: both;
+}
+
+.wy-green {
+  color: #439a46;
+}
+
+// embed iframe
+.wy-iframe {
+  width: 100%;
+  height: calc(100vh - 160px);
+  border: 1px solid #efefef;
+  box-shadow: 0 0 40px 1px #efefef;
+}

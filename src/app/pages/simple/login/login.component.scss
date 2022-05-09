@@ -1,0 +1,50 @@
+.wy-login {
+  .input-group-prepend,
+  .input-group-append {
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+
+  .wy-auth-tenants {
+    padding: 5px;
+
+    button {
+      margin-right: 5px;
+      margin-bottom: 5px;
+      width: 150px;
+      height: 75px;
+      overflow: auto;
+      border-radius: 0;
+    }
+  }
+
+  .card {
+    border: 0;
+    border-radius: 0;
+    background-color: #efefef;
+
+    .card-body {
+      p {
+        max-width: 40vw;
+      }
+    }
+  }
+}
+
+.wy-login-brand-image {
+  max-width: 300px;
+  width: 100%;
+}
+
+//=xs breakpoint
+@media (max-width: 568px) {
+  .wy-login {
+    .card {
+      .card-body {
+        p {
+          max-width: 80vw;
+        }
+      }
+    }
+  }
+}

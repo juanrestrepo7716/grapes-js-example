@@ -1,0 +1,129 @@
+//::Bag::Default
+$header-height: 70px;
+$footer-height: 80px;
+.wy-full-layout {
+    .wy-header {
+        width: 100%;
+        padding: 15px;
+        height: $header-height;
+        border-bottom: 2px solid #efefef;
+        .wy-header-drawer-toggle {
+            .k-icon {
+                font-size: 16pt;
+            }
+        }
+        .wy-brand-logo {
+            height: 35px;
+            margin-right: 10px;
+        }
+        .wy-brand-image {
+            height: 55px;
+            margin-right: 10px;
+            margin-top: -11px;
+        }
+        .wy-header-brand {
+            float: left;
+            margin-right: 8px;
+            margin-left: 8px;
+            margin-top: 2px;
+            font-weight: bold;
+            font-size: 16pt;
+        }
+        .wy-header-menu {
+            float: right;
+            .wy-avatar {
+                width: 14px;
+            }
+            button {
+                margin-right: 5px;
+                height: 35px;
+                box-shadow: none;
+            }
+        }
+    }
+    kendo-drawer-container {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        .wy-menu {
+            background-color: #efefef;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+            .k-panelbar {
+                height: calc(100vh - #{$header-height} - #{$footer-height}) !important;
+                border-color: #efefef;
+                background-color: #efefef;
+                kendo-panelbar-item {
+                    &.k-state-expanded {
+                        background-color: #ddd;
+                        kendo-panelbar-item .k-icon {
+                            transform: scale(.6);
+                        }
+                    }
+                    span.k-link {
+                        cursor: pointer !important;
+                    }
+                    .k-icon {
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+        kendo-drawer-content.wy-main {
+            overflow: auto;
+            background-color: #fff;
+            &.wy-main-hdr {
+                height: calc(100vh - #{$header-height});
+            }
+            &.wy-main-nhdr {
+                height: 100vh;
+            }
+        }
+    }
+    .wy-footer {
+        position: fixed;
+        overflow: auto;
+        bottom: 0;
+        width: 280px;
+        height: #{$footer-height};
+        padding: 10px;
+        border-top: 2px solid #ddd;
+        p {
+            display: inline;
+        }
+    }
+}
+.wy-app-launcher {
+    padding: 10px;
+    .wy-app-card {
+        display: table-cell;
+        padding-right: 8px;
+        padding-bottom: 8px;
+        color: #ffffff;
+        .wy-card-media-image {
+            height: 250px;
+            background-size: cover;
+            background-color: #efefef;
+        }
+        kendo-card {
+            width: 250px !important;
+            h4,
+            p {
+                color: #ffffff;
+            }
+            .k-button {
+                font-weight: bold;
+                color: #ffffff;
+            }
+        }
+    }
+}
+@media (max-width: 568px) {
+    .wy-app-launcher {
+        .wy-app-card {
+            display: block;
+            kendo-card {
+                width: 100% !important;
+            }
+        }
+    }
+}

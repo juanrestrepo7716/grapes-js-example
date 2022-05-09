@@ -1,0 +1,83 @@
+<!--::Bag::Deployment
+-->
+<div class="wy-login">
+    <kendo-dialog class="wy-dialog-noclose">
+        <kendo-dialog-titlebar>
+            <div i18n="@@Login">Login</div>
+        </kendo-dialog-titlebar>
+        <form>
+            <div class="card-group">
+                <div class="card">
+                    <div *ngIf="activeStep == 0" class="card-body">
+                        <p class="text-muted" i18n="@@SignInToYourAccount">Sign In to your account</p>
+                        <div class="input-group mb-3 wy-auth-username">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-user" style="width: 15px;"></i>
+                                </span>
+                            </div>
+                            <input (keyup.enter)="preAuthenticate()" type="text" name="username" required
+                                class="form-control" [(ngModel)]="credentials.userName" placeholder="Username"
+                                i18n-placeholder="@@UserName" wyEnableAutofocus>
+                        </div>
+                        <div class="input-group mb-4 wy-auth-password">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-unlock-alt" style="width: 15px;"></i>
+                                </span>
+                            </div>
+                            <input (keyup.enter)="preAuthenticate()" type="password" name="password"
+                                class="form-control" [(ngModel)]="credentials.password" placeholder="Password"
+                                i18n-placeholder="@@Password">
+                        </div>
+                        <input type="checkbox" [(ngModel)]="credentials.enableRefresh" name="enableRefresh" />
+                        <p class="text-muted" i18n="@@StaySignedIn">Stay signed in</p>
+                        <div class="row">
+                            <div class="col-6">
+                                <button type="submit" kendoButton (click)="preAuthenticate()"
+                                    i18n="@@Login">Login</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="activeStep == 1" class="card-body">
+                        <p class="text-muted" i18n="@@SelectTenant">Select your tenant</p>
+                        <div class="wy-auth-tenants" style="max-height: 50vh; max-width: 500px; overflow: auto;">
+                            <button kendoButton type="button" *ngFor="let tenant of tenants" href="#"
+                                (click)="selectTenant(tenant)">
+                                {{tenant.TenantName}}
+                            </button>
+                        </div>
+                    </div>
+                    <div *ngIf="activeStep == 2" class="card-body">
+                        <p class="text-muted" i18n="@@EnterVerificationCode">Please enter your verification code
+                        </p>
+                        <div class="input-group mb-3 wy-auth-verificationcode">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-check-square" style="width: 15px;"></i>
+                                </span>
+                            </div>
+                            <input (keyup.enter)="authenticate()" type="text" name="verificationcode" required
+                                class="form-control" [(ngModel)]="credentials.verificationCode"
+                                placeholder="Verification code" i18n-placeholder="@@VerificationCode">
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <button type="submit" kendoButton (click)="authenticate()"
+                                    i18n="@@Verify">Verify</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card text-white bg-primary">
+                    <div class="card-body text-center">
+                        <div>
+                            <h2>Todo App</h2>
+                            <div style="white-space: pre-wrap;">Tick off your tasks and get more organised.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </kendo-dialog>
+</div>

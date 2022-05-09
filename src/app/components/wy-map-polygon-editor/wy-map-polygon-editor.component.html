@@ -1,0 +1,12 @@
+﻿<div class="wy-map-polygon-editor-container">
+    <div *ngIf="editableLayers" leaflet class="wy-map-polygon-editor"
+        leafletDraw
+        [leafletOptions]="options"
+        [leafletLayersControl]="layersControl"
+        [leafletDrawOptions]="drawOptions"
+        (leafletDrawCreated)="onDrawCreated($event)"
+        (leafletDrawEdited)="onDrawEdited($event)"
+        (leafletMapReady)="onMapReady($event)">
+        <div [leafletLayer]="editableLayers"></div>
+    </div>
+</div>

@@ -1,0 +1,1 @@
+ng xi18n --output-path _temp --out-file messages.nl.xlf

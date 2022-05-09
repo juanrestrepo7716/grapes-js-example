@@ -1,0 +1,16 @@
+<!--::Bag::Default
+-->
+<img *ngIf="src" (click)="openImageViewer($event)" 
+      [className]="largeThumbnail ? 'wy-thumbnail-lg' : 'wy-thumbnail'" 
+      style="cursor: zoom-in;"
+      [title]="title + prettySize"
+      [src]="src" />
+<kendo-dialog [width]="dialogWidth" [height]="dialogHeight" *ngIf="isImageViewerOpen" (close)="closeImageViewer()">
+      <kendo-dialog-titlebar>
+            <ng-container i18n="@@View">View</ng-container> {{ title }} {{ prettySize }}
+      </kendo-dialog-titlebar>
+      <img class="wy-full-image" [src]="src" />
+      <kendo-dialog-actions>
+            <button kendoButton (click)="closeImageViewer()" i18n="@@Close">Close</button>
+      </kendo-dialog-actions>
+</kendo-dialog>

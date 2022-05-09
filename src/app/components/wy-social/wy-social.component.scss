@@ -1,0 +1,21 @@
+//::Bag::Default
+.wy-social {
+    background-color: #efefef;
+    padding: 15px;
+    border-radius: 10px;
+    .wy-social-bar {
+        button {
+            margin-right: 10px;
+        }
+        .wy-social-reaction {
+            margin-bottom: 5px;
+        }
+        .wy-social-reaction-motivation {
+            textarea {
+                margin-top: 5px;
+                width: 100%;
+                padding: 5px;
+            }
+        }
+    }
+}

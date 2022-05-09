@@ -1,0 +1,34 @@
+<!--::Bag::Default
+-->
+<div id="PORTAL_HOST"></div>
+<div kendoWindowContainer></div>
+<div kendoDialogContainer></div>
+<div *ngIf="ready" class="wy-app" [ngClass]="roleClass">
+    <router-outlet></router-outlet>
+</div>
+<div *ngIf="!ready">
+    <div class="wy-loading-app">
+        <div class="wy-ripple">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+<div class="wy-dynamic-translations">
+    <span class="PleaseWait" i18n="@@PleaseWait">Please wait...</span>
+    <span class="Succeeded" i18n="@@Succeeded">Succeeded</span>
+    <span class="Failed" i18n="@@Failed">Failed</span>
+    <span class="Save" i18n="@@Save">Save</span>
+    <span class="Delete" i18n="@@Delete">Delete</span>
+    <span class="DeleteConfirmation" i18n="@@DeleteConfirmation">Are you sure you want to delete this item?</span>
+    <span class="RecycleBinRestoreConfirmation" i18n="@@RecycleBinRestoreConfirmation">Restore this item from the recycle bin?</span>
+    <span class="YourRequestIsBeingProcessed" i18n="@@YourRequestIsBeingProcessed">Your request is being processed...</span>
+    <span class="YourRequestCompletedSuccessfully" i18n="@@YourRequestCompletedSuccessfully">Your request completed successfully.</span>
+    <span class="YourRequestFailed" i18n="@@YourRequestFailed">Your request failed.</span>
+    <span class="BackgroundError"i18n="@@BackgroundError">An error occurred in the background. Contact your administrator for details.</span>
+    <span class="DataSaved" i18n="@@DataSaved">Data successfully saved.</span>
+    <span class="DataNotSaved" i18n="@@DataNotSaved">There was a problem saving the data.</span>
+    <span class="Loading" i18n="@@Loading">Loading</span>
+    <span class="InvalidDataPleaseCorrect" i18n="@@InvalidDataPleaseCorrect">The form contains invalid data. Please correct before saving.</span>
+    <span class="AuthenticationFailed" i18n="@@AuthenticationFailed">Could not authenticate. Please contact your system administrator.</span>
+</div>

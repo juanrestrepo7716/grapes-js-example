@@ -1,0 +1,37 @@
+<!--::Bag::Default
+-->
+<div *ngIf="formControl" class="wy-blob-upload"
+    (click)="downloadBlob($event.target)">
+    <div *ngIf="multiple; else single">
+        <kendo-upload [saveUrl]="blobsUploadSaveUrl"
+            [removeUrl]="'/'"
+            [(ngModel)]="blobList"
+            [ngModelOptions]="{standalone: true}"
+            [multiple]="true"
+            [disabled]="blobList == null"
+            [restrictions]="getRestrictions()"
+            (valueChange)="blobsValueChangeUploadEventHandler($event)"
+            (remove)="blobsRemoveUploadEventHandler($event)"
+            (select)="blobsSelectUploadEventHandler($event)">
+        </kendo-upload>
+    </div>
+    <ng-template #single>
+        <div [class.wy-enough-files]="blobList?.length > 0">
+            <kendo-upload [saveUrl]="blobsUploadSaveUrl"
+                [removeUrl]="'/'"
+                [(ngModel)]="blobList"
+                [ngModelOptions]="{standalone: true}"
+                [multiple]="false"
+                [disabled]="blobList == null"
+                [restrictions]="getRestrictions()"
+                (valueChange)="blobsValueChangeUploadEventHandler($event)"
+                (remove)="blobsRemoveUploadEventHandler($event)"
+                (select)="blobsSelectUploadEventHandler($event)">
+                <kendo-upload-messages
+                    select="Select file..." i18n-select="@@SelectFile"
+                >
+                </kendo-upload-messages>
+            </kendo-upload>
+        </div>
+    </ng-template>
+</div>

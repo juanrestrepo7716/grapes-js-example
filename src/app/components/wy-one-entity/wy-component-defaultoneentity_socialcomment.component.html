@@ -1,0 +1,121 @@
+<form *ngIf="hasEntity" novalidate [formGroup]="editForm" class="wy-one-entity">
+            <kendo-tabstrip [tabPosition]="tabPosition">
+                        <kendo-tabstrip-tab i18n-title="@@DisplayLabelPropertyGroup_SocialComment" title="Social Comment" [selected]="true">
+                            <ng-template kendoTabContent>
+                                <div class="wy-one-entity-readonly" *ngIf="readonly; else editable">
+                                            <div 
+                                                title="Social Key"
+                                                i18n-title="@@TitleProperty_SocialKey"
+                                                class="wy-cls-property-socialkey form-group row">
+                                                <label class="col-md-2 control-label">
+                                                    <ng-container i18n="@@DisplayLabelProperty_SocialKey">Social Key</ng-container>
+                                                </label>
+                                                <div class="col-md-10 wy-property-value">
+                                                        <div>{{ editForm.get('SocialKey').value }}</div>
+                                                </div>
+                                            </div>
+                                            <div 
+                                                title="User Name"
+                                                i18n-title="@@TitleProperty_UserName"
+                                                class="wy-cls-property-username form-group row">
+                                                <label class="col-md-2 control-label">
+                                                    <ng-container i18n="@@DisplayLabelProperty_UserName">User Name</ng-container>
+                                                </label>
+                                                <div class="col-md-10 wy-property-value">
+                                                        <div>{{ editForm.get('UserName').value }}</div>
+                                                </div>
+                                            </div>
+                                            <div 
+                                                title="Created"
+                                                i18n-title="@@TitleProperty_Created"
+                                                class="wy-cls-property-created form-group row">
+                                                <label class="col-md-2 control-label">
+                                                    <ng-container i18n="@@DisplayLabelProperty_Created">Created</ng-container>
+                                                </label>
+                                                <div class="col-md-10 wy-property-value">
+                                                        <div>{{ us.formatDateTime(editForm.get('Created').value) }}</div>
+                                                </div>
+                                            </div>
+                                            <div 
+                                                title="Text"
+                                                i18n-title="@@TitleProperty_Text"
+                                                class="wy-cls-property-text form-group row">
+                                                <label class="col-md-2 control-label">
+                                                    <ng-container i18n="@@DisplayLabelProperty_Text">Text</ng-container>
+                                                </label>
+                                                <div class="col-md-10 wy-property-value">
+                                                        <div>{{ editForm.get('Text').value }}</div>
+                                                </div>
+                                            </div>
+                                </div>
+                                <ng-template #editable>
+                                    <div class="wy-one-entity-editable">
+                                                <div 
+                                                    title="Social Key"
+                                                    i18n-title="@@TitleProperty_SocialKey"
+                                                    class="wy-cls-property-socialkey form-group row">
+                                                    <label class="col-md-2 control-label">
+                                                        <ng-container i18n="@@DisplayLabelProperty_SocialKey">Social Key</ng-container>
+                                                    </label>
+                                                    <div class="col-md-10 col-fill wy-property-value">
+                                                            <input
+                                                                type="text"
+                                                                kendoTextBox
+                                                                placeholder="Social Key"
+                                                                i18n-placeholder="@@PlaceholderProperty_SocialKey"
+                                                                formControlName="SocialKey" />
+                                                    </div>
+                                                </div>
+                                                <div 
+                                                    title="User Name"
+                                                    i18n-title="@@TitleProperty_UserName"
+                                                    class="wy-cls-property-username form-group row">
+                                                    <label class="col-md-2 control-label">
+                                                        <ng-container i18n="@@DisplayLabelProperty_UserName">User Name</ng-container>
+                                                    </label>
+                                                    <div class="col-md-10 col-fill wy-property-value">
+                                                            <input
+                                                                type="text"
+                                                                kendoTextBox
+                                                                placeholder="User Name"
+                                                                i18n-placeholder="@@PlaceholderProperty_UserName"
+                                                                formControlName="UserName" />
+                                                    </div>
+                                                </div>
+                                                <div 
+                                                    title="Created"
+                                                    i18n-title="@@TitleProperty_Created"
+                                                    class="wy-cls-property-created form-group row">
+                                                    <label class="col-md-2 control-label">
+                                                        <ng-container i18n="@@DisplayLabelProperty_Created">Created</ng-container>
+                                                    </label>
+                                                    <div class="col-md-10 col-fill wy-property-value">
+                                                            <kendo-datepicker
+                                                                formControlName="Created"
+                                                                [disabled]="false"
+                                                                [format]="'dd-MMM-yyyy HH:mm:ss'">
+                                                            </kendo-datepicker>
+                                                    </div>
+                                                </div>
+                                                <div 
+                                                    title="Text"
+                                                    i18n-title="@@TitleProperty_Text"
+                                                    class="wy-cls-property-text form-group row">
+                                                    <label class="col-md-2 control-label">
+                                                        <ng-container i18n="@@DisplayLabelProperty_Text">Text</ng-container>
+                                                    </label>
+                                                    <div class="col-md-10 col-fill wy-property-value">
+                                                            <input
+                                                                type="text"
+                                                                kendoTextBox
+                                                                placeholder="Text"
+                                                                i18n-placeholder="@@PlaceholderProperty_Text"
+                                                                formControlName="Text" />
+                                                    </div>
+                                                </div>
+                                    </div>
+                                </ng-template>
+                            </ng-template>
+                        </kendo-tabstrip-tab>
+            </kendo-tabstrip>
+</form>

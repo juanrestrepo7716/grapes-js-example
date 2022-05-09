@@ -1,0 +1,15 @@
+﻿<kendo-dropdownlist
+      [data]="data"
+      (valueChange)="onChange($event)"
+      [defaultItem]="defaultItem"
+      [value]="selectedValue"
+      [valuePrimitive]="true"
+      [textField]="valueField"
+      [valueField]="valueField">
+      <ng-template kendoDropDownListItemTemplate kendoDropDownListValueTemplate let-item>
+          <ng-container
+              [ngTemplateOutlet]="enumValueTemplate" 
+              [ngTemplateOutletContext]="{value: item?.value}">
+          </ng-container>
+      </ng-template>
+</kendo-dropdownlist>

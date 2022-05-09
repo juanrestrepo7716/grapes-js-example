@@ -1,0 +1,196 @@
+<div class="wy-grid">
+    <div *ngIf="showToolbar && !asRecycleBin">
+        <wy-grid-toolbar
+            [showNew]="true && isFeatureEnabled('Add_SocialComment')"
+            [showGridViewMode]="false"
+            [gridViewMode]="gridViewMode"
+            (onAction)="onToolbarAction($event)">
+            <div newButton>
+                    <button [wyIsFeatureEnabled]="'Add_SocialComment'" [disabled]="!!selectedEntity" class="wy-button wy-cls-create-new" kendoButton (click)="addNewEntity()"
+                        title="New" i18n-title="@@New">
+                        <i class="fas fa-plus-circle wy-green"></i>
+                        <span class="d-none d-sm-inline wy-label-indent" i18n="@@New">New</span>
+                    </button>
+            </div>
+        </wy-grid-toolbar>
+    </div>
+    <kendo-grid *ngIf="gridViewMode == 'Columns'" wyGrid [data]="gridDataResult"
+                [autoSize]="false"
+                [loading]="loading"
+                [filterable]="filterable"
+                [groupable]="groupable"
+                [group]="groups"
+                [skip]="state.skip"
+                [pageSize]="state.take"
+                [sort]="state.sort"
+                [filter]="state.filter"
+                (groupChange)="groupChange($event)"
+                (pageChange)="pageChangeHandler($event)"
+                (filterChange)="filterChangeHandler($event)"
+                (cellClick)="cellClickHandler($event)"
+                (sortChange)="sortChangeHandler($event)"
+                (add)="addNewEntity()"
+                [rowClass]="rowClassCallback"
+                [selectable]="{ enabled: true, mode: 'single' }"
+                [rowSelected]="isThisEntitySelected">                
+        <kendo-grid-column [minResizableWidth]="gcd.Id.minColWidth"
+                [hidden]="!gcc.Id.visible" field="Id"
+                i18n-title="@@Id" title="Id"
+                filter="numeric">
+            <ng-template kendoGridCellTemplate let-entity>
+                <span class="wy-id">{{ entity.Id }}</span>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column [minResizableWidth]="gcd['@odata.type'].minColWidth"
+                [hidden]="!gcc['@odata.type'].visible" title="🛈" [autoSize]="false"
+                [width]="gcd['@odata.type'].minColWidth">
+            <ng-template kendoGridCellTemplate let-entity>
+                <div *ngIf="getClassName(entity) == 'SocialComment'" [title]="getEntityTooltip(entity)" class="wy-coin">
+                    <i i18n-title="@@DisplayLabelClass_SocialComment"
+                        [style.backgroundColor]="'#00FFFF'" class="fa-comments-o fa-fw"></i>
+                </div>
+            </ng-template>
+        </kendo-grid-column>
+            <kendo-grid-column wyGridColumn [gcd]="gcd.SocialKey" [hidden]="!gcc.SocialKey.visible"
+                i18n-title="@@DisplayLabelGridColumn_SocialKey" title="Social Key">
+            </kendo-grid-column>
+            <kendo-grid-column wyGridColumn [gcd]="gcd.UserName" [hidden]="!gcc.UserName.visible"
+                i18n-title="@@DisplayLabelGridColumn_UserName" title="User Name">
+            </kendo-grid-column>
+            <kendo-grid-column wyGridColumn [gcd]="gcd.Created" [hidden]="!gcc.Created.visible"
+                i18n-title="@@DisplayLabelGridColumn_Created" title="Created">
+            </kendo-grid-column>
+            <kendo-grid-column wyGridColumn [gcd]="gcd.Text" [hidden]="!gcc.Text.visible"
+                i18n-title="@@DisplayLabelGridColumn_Text" title="Text">
+            </kendo-grid-column>
+            <kendo-grid-command-column title="" [width]="50" [minResizableWidth]="50">
+                <ng-template kendoGridCellTemplate let-entity let-rowIndex="rowIndex">
+                    <kendo-dropdownbutton class="wy-button wy-cls-entity-actions"
+                        [data]="entityGridActionsDropDownButtons"
+                        [icon]="'more-horizontal'"
+                        [popupSettings]="{ popupClass: 'wy-entity-grid-actions-dropdown' }"
+                        (itemClick)="triggerEntityGridAction(entity, $event, rowIndex)">
+                        <ng-template kendoDropDownButtonItemTemplate let-dataItem>
+                            <div *ngIf="dataItem.name == '$delete'" class="wy-cls-delete">
+                                <i *ngIf="!entity.DeleteStatus" class="fas fa-times fa-fw"></i>
+                                <i *ngIf="entity.DeleteStatus == 1" class="fas fa-trash-restore fa-fw"></i>
+                                <span *ngIf="!entity.DeleteStatus" class="wy-label-indent" i18n="@@Delete">Delete</span>
+                                <span *ngIf="entity.DeleteStatus == 1" class="wy-label-indent" i18n="@@Restore">Restore</span>
+                            </div>
+                            <div *ngIf="dataItem.name == '$copy'" class="wy-cls-copy">
+                                <i class="fas fa-copy fa-fw"></i>
+                                <span class="wy-label-indent" i18n="@@Copy">Copy</span>
+                            </div>
+                            <div *ngIf="dataItem.name == '$moveUp'" class="wy-cls-up">
+                                <i class="fas fa-arrow-up fa-fw"></i>
+                                <span class="wy-label-indent" i18n="@@MoveUp">Move up</span>
+                            </div>
+                            <div *ngIf="dataItem.name == '$moveDown'" class="wy-cls-down">
+                                <i class="fas fa-arrow-down fa-fw"></i>
+                                <span class="wy-label-indent" i18n="@@MoveDown">Move down</span>
+                            </div>
+                        </ng-template>
+                    </kendo-dropdownbutton>
+                </ng-template>
+            </kendo-grid-command-column>
+        <kendo-grid-pdf fileName="SocialComments.pdf" [allPages]="false" paperSize="A4" [scale]="0.5" [repeatHeaders]="true" [landscape]="true">
+            <kendo-grid-pdf-margin top="1cm" left="1cm" right="1cm" bottom="1cm"></kendo-grid-pdf-margin>
+        </kendo-grid-pdf>
+        <kendo-grid-excel fileName="SocialComments.xlsx"></kendo-grid-excel>
+        <ng-template kendoPagerTemplate>
+            <kendo-datapager
+                [style.width.%]="100"
+                [skip]="state.skip"
+                [pageSize]="state.take"
+                [pageSizeValues]="[5, 10, 20, 100, 500, 1000]"
+                [total]="gridDataResult?.total"
+                (pageChange)="pageChangeHandler($event)">
+            </kendo-datapager>
+        </ng-template>
+    </kendo-grid>
+    <wy-entity-window *ngIf="selectedEntity && !selectedEntityKind"
+        title="Social Comment"
+        i18n-title="@@DisplayLabelClass_SocialComment"
+        icon="fa-comments-o"
+        color="#00FFFF"
+        [entity]="selectedEntity"
+        [isNew]="selectedEntityIsNew"
+        [readonly]="selectedAsReadonly"
+        (save)="saveEntityHandler($event)"
+        (cancel)="cancelEntityHandler()">
+        <wy-component-defaultoneentity_socialcomment
+            #oneEntity *ngIf="!selectedEntityKind"
+            [entity]="selectedEntity"
+            [isNew]="selectedEntityIsNew"
+            [commentsActive]="!selectedEntityIsNew"
+            [readonly]="selectedAsReadonly">
+        </wy-component-defaultoneentity_socialcomment>
+    </wy-entity-window>
+    <kendo-dialog [width]="dialogWidth" [height]="dialogHeight" *ngIf="gridConfigurationActive" (close)="closeGridConfiguration()" class="wy-grid-configuration">
+        <kendo-dialog-titlebar>
+            <ng-container i18n="@@GridConfiguration">Configure</ng-container>
+        </kendo-dialog-titlebar>
+        <kendo-tabstrip>
+            <kendo-tabstrip-tab i18n-title="@@Columns" title="Columns" [selected]="true">
+                <ng-template kendoTabContent>
+                    <label class="control-label">
+                        <input type="checkbox" [(ngModel)]="gcc['@odata.type'].visible" />
+                        🛈
+                    </label>
+                    <br>
+                    <label class="control-label">
+                        <input type="checkbox" [(ngModel)]="gcc.Id.visible" />
+                        <span i18n="@@Id">Id</span>
+                    </label>
+                    <br>
+                    <div class="card-columns">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title" i18n="@@DisplayLabelPropertyGroup_SocialComment">Social Comment</h5>
+                                    <div class="card-body">
+                                                <label class="wy-cls-property-socialkey control-label">
+                                                    <input type="checkbox" [(ngModel)]="gcc.SocialKey.visible" />
+                                                    <span i18n="@@DisplayLabelProperty_SocialKey">Social Key</span>                                                    
+                                                </label>
+                                                <br>
+                                                <label class="wy-cls-property-username control-label">
+                                                    <input type="checkbox" [(ngModel)]="gcc.UserName.visible" />
+                                                    <span i18n="@@DisplayLabelProperty_UserName">User Name</span>                                                    
+                                                </label>
+                                                <br>
+                                                <label class="wy-cls-property-created control-label">
+                                                    <input type="checkbox" [(ngModel)]="gcc.Created.visible" />
+                                                    <span i18n="@@DisplayLabelProperty_Created">Created</span>                                                    
+                                                </label>
+                                                <br>
+                                                <label class="wy-cls-property-text control-label">
+                                                    <input type="checkbox" [(ngModel)]="gcc.Text.visible" />
+                                                    <span i18n="@@DisplayLabelProperty_Text">Text</span>                                                    
+                                                </label>
+                                                <br>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </ng-template>
+            </kendo-tabstrip-tab>
+        </kendo-tabstrip>
+        <kendo-dialog-actions>
+            <button kendoButton (click)="resetGridConfiguration($event)" i18n="@@Reset">Reset</button>
+            <button kendoButton [primary]="true" (click)="saveGridConfiguration($event)" i18n="@@Save">Save</button>
+        </kendo-dialog-actions>
+    </kendo-dialog>
+    <kendo-dialog [width]="dialogWidth" [height]="dialogHeight" *ngIf="pivotReport" (close)="closePivot()" class="wy-pivot">
+        <kendo-dialog-titlebar>
+            <ng-container i18n="@@Pivot">Pivot</ng-container>
+        </kendo-dialog-titlebar>
+        <wy-pivot [toolbar]="true"
+            [width]="'100%'"
+            [height]="dialogHeight - 130"
+            [report]="pivotReport">
+        </wy-pivot>
+        <kendo-dialog-actions>
+            <button kendoButton [primary]="true" (click)="closePivot()" i18n="@@Close">Close</button>
+        </kendo-dialog-actions>
+    </kendo-dialog>
+</div>

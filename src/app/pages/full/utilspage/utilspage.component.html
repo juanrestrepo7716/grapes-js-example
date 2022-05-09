@@ -1,0 +1,35 @@
+<!--::Bag::DataStores
+-->
+<kendo-tabstrip>
+    <kendo-tabstrip-tab [title]="'Default'" [selected]="true">
+        <ng-template kendoTabContent>
+            <div style="padding: 5px;">
+                <h3 class="wy-hdr">Export Default</h3>
+                <p>Export all entities to a ZIP file.</p>
+                <button kendoButton (click)="exportEntities('default')">
+                    <i class="fas fa-download"></i>&nbsp;Export entity archive
+                </button>
+                <p></p>
+                <p>Export all blobs to a ZIP file.</p>
+                <button kendoButton (click)="exportBlobs('default')">
+                    <i class="fas fa-file"></i>&nbsp;Export all blobs
+                </button>
+                <p><br></p>
+                <h3 class="wy-hdr">Import Default</h3>
+                <p>Import a ZIP file containing entities.</p>
+                <kendo-upload [saveUrl]="uploadImportEntitiesUrl('default')" [multiple]="false"
+                    [restrictions]="uploadZipRestrictions"
+                    (success)="showSuccess()">
+                </kendo-upload>
+                <p></p>
+                <p>Import a ZIP file containing blobs.</p>
+                <kendo-upload [saveUrl]="uploadImportBlobsUrl('default')" [multiple]="false"
+                    [restrictions]="uploadZipRestrictions"
+                    (success)="showSuccess()">
+                </kendo-upload>
+                <p><br></p>
+            </div>
+        </ng-template>
+    </kendo-tabstrip-tab>
+</kendo-tabstrip>
+<br><br>

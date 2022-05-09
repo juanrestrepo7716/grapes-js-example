@@ -1,0 +1,191 @@
+<!--::Bag::Navigation
+-->
+<div class="wy-full-layout">
+    <div *ngIf="headerMode == 'show'" class="wy-header wy-app-color">
+        <button class="wy-header-drawer-toggle" kendoButton icon="menu" look="flat" (click)="drawer.toggle()"></button>
+        <div class="wy-header-brand">
+                <a [routerLink]="['/app/todoitems/gridpage']">
+                    <img class="wy-brand-logo" src="assets/img/favicon-512x512.png?Todo2.32" title="Todo App">Todo App
+                </a>
+        </div>
+        <div class="wy-header-menu">
+            <button *ngIf="appLauncherConfig" [wyIsFeatureEnabled]="'Common_AppLauncher'" kendoButton (click)="toggleAppLauncher()">
+                <i class="fad fa-th"></i>
+            </button>
+            <button kendoButton *ngIf="isLoading">
+                <i class="fas fa-circle-notch fa-spin"></i>
+            </button>
+                    <button
+                        [wyIsFeatureEnabled]="'Operation_Test'"
+                        kendoButton
+                        class="wy-operation wy-operation-test" 
+                        title="Test"
+                        i18n-title="@@DisplayLabelOperation_Test"
+                        (click)="triggerOperation('Default', 'Test', '', 'Sure?')">
+                        <i class="fas fa-adjust"></i>
+                    </button>
+            <button kendoButton [routerLink]="['']">
+                <img [src]="userImage" class="wy-avatar" (error)="setDefaultUserImage()" [alt]="userName" [title]="userName" />
+            </button>
+            <button kendoButton (click)="logout()">
+                <i class="fas fa-power-off"></i>
+            </button>
+        </div>
+    </div>
+    <kendo-drawer-container>
+        <kendo-drawer #drawer [(expanded)]="drawerExpanded" [mode]="drawerMode" width="280" class="wy-menu">
+            <ng-template kendoDrawerHeaderTemplate>
+                <kendo-panelbar [animate]="false">
+                    <kendo-panelbar-item
+                        *ngIf="drawerMode == 'overlay'"
+                        [disabled]="true"
+                        i18n-title="@@_Todo App" 
+                        title="Todo App">
+                    </kendo-panelbar-item>
+                            <kendo-panelbar-item
+                                [wyIsFeatureEnabled]="'MenuItem_Project'"
+                                [selected]="isRouteActive('/app/projects/editpage/first')"
+                                class="wy-menu-link-dd-project"
+                                i18n-title="@@DisplayLabelMenuItem_Project" 
+                                title="Project"
+                                iconClass="fas fa-folder"
+                                [routerLink]="['/app/projects/editpage/first']">
+                            </kendo-panelbar-item>
+                            <kendo-panelbar-item
+                                [wyIsFeatureEnabled]="'MenuItem_TodoItems'"
+                                [selected]="isRouteActive('/app/todoitems/gridpage')"
+                                class="wy-menu-link-dd-todoitems"
+                                i18n-title="@@DisplayLabelMenuItem_TodoItems" 
+                                title="Todo Items"
+                                iconClass="fas fa-list-ul"
+                                [routerLink]="['/app/todoitems/gridpage']">
+                            </kendo-panelbar-item>
+                            <kendo-panelbar-item
+                                [wyIsFeatureEnabled]="'MenuItem_Users'"
+                                [selected]="isRouteActive('/app/users/gridpage')"
+                                class="wy-menu-link-dd-users"
+                                i18n-title="@@DisplayLabelMenuItem_Users" 
+                                title="Users"
+                                iconClass="fas fa-user"
+                                [routerLink]="['/app/users/gridpage']">
+                            </kendo-panelbar-item>
+                            <kendo-panelbar-item
+                                [wyIsFeatureEnabled]="'MenuItem_System'"
+                                class="wy-menu-dd-system"
+                                i18n-title="@@DisplayLabelMenuItem_System" 
+                                iconClass="fas fa-gear"
+                                title="System">
+                                    <kendo-panelbar-item
+                                        [wyIsFeatureEnabled]="'MenuItem_404'"
+                                        [selected]="isRouteActive('/app/404')"
+                                        class="wy-menu-link-dd-404"
+                                        i18n-title="@@DisplayLabelMenuItem_404"
+                                        title="404"
+                                        iconClass="fas fa-file"
+                                        [routerLink]="['/app/404']">
+                                    </kendo-panelbar-item>
+                                    <kendo-panelbar-item
+                                        [wyIsFeatureEnabled]="'MenuItem_Utils'"
+                                        [selected]="isRouteActive('/app/utils')"
+                                        class="wy-menu-link-dd-utils"
+                                        i18n-title="@@DisplayLabelMenuItem_Utils"
+                                        title="Utils"
+                                        iconClass="fas fa-gear"
+                                        [routerLink]="['/app/utils']">
+                                    </kendo-panelbar-item>
+                                    <kendo-panelbar-item
+                                        [wyIsFeatureEnabled]="'MenuItem_ManageFiles'"
+                                        [selected]="isRouteActive('/app/blobpage')"
+                                        class="wy-menu-link-dd-managefiles"
+                                        i18n-title="@@DisplayLabelMenuItem_ManageFiles"
+                                        title="Manage Files"
+                                        iconClass="fas fa-upload"
+                                        [routerLink]="['/app/blobpage']">
+                                    </kendo-panelbar-item>
+                                    <kendo-panelbar-item
+                                        [wyIsFeatureEnabled]="'MenuItem_Projects'"
+                                        [selected]="isRouteActive('/app/projects/gridpage')"
+                                        class="wy-menu-link-dd-projects"
+                                        i18n-title="@@DisplayLabelMenuItem_Projects"
+                                        title="Projects"
+                                        iconClass="fas fa-folder"
+                                        [routerLink]="['/app/projects/gridpage']">
+                                    </kendo-panelbar-item>
+                            </kendo-panelbar-item>
+                            <kendo-panelbar-item
+                                [wyIsFeatureEnabled]="'MenuItem_Reports'"
+                                [selected]="isRouteActive('/app/reports')"
+                                class="wy-menu-link-dd-reports"
+                                i18n-title="@@DisplayLabelMenuItem_Reports" 
+                                title="Reports"
+                                iconClass="fas fa-file"
+                                [routerLink]="['/app/reports']">
+                            </kendo-panelbar-item>
+                            <kendo-panelbar-item
+                                [wyIsFeatureEnabled]="'MenuItem_Demo'"
+                                [selected]="isRouteActive('/app/demo')"
+                                class="wy-menu-link-dd-demo"
+                                i18n-title="@@DisplayLabelMenuItem_Demo" 
+                                title="Demo"
+                                iconClass="fas fa-globe"
+                                [routerLink]="['/app/demo']">
+                            </kendo-panelbar-item>
+                            <kendo-panelbar-item
+                                [wyIsFeatureEnabled]="'MenuItem_Social'"
+                                [selected]="isRouteActive('/app/social/grouppage')"
+                                class="wy-menu-link-dd-social"
+                                i18n-title="@@DisplayLabelMenuItem_Social" 
+                                title="Social"
+                                iconClass="fas fa-comments-o"
+                                [routerLink]="['/app/social/grouppage']">
+                            </kendo-panelbar-item>
+                </kendo-panelbar>
+                <div class="wy-footer wy-app-color">
+                    TodoApp.<br>
+Demonstration app for the wyStack platform.<br>
+Initial version.
+                    <span class="wy-tenant" [title]="tooltip">
+                        🔌&nbsp;{{ tenant }}
+                    </span>
+                </div>
+            </ng-template>
+        </kendo-drawer>
+        <kendo-drawer-content [ngClass]="(headerMode == 'show') ? 'wy-main wy-main-hdr' : 'wy-main wy-main-nhdr'">
+            <main *ngIf="showMain" class="container-fluid" style="margin-top: 10px;">
+                <router-outlet></router-outlet>
+            </main>
+        </kendo-drawer-content>
+    </kendo-drawer-container>
+</div>
+<kendo-dialog [width]="dialogWidth" [height]="dialogHeight" *ngIf="showAppLauncher" (close)="toggleAppLauncher()">
+    <kendo-dialog-titlebar>
+        <span i18n="@@AppLauncherTitle">App Launcher</span>
+    </kendo-dialog-titlebar>
+    <div class="wy-app-launcher">
+        <div class="wy-app-card" *ngFor="let app of appLauncherConfig.value">
+            <kendo-card [style.backgroundColor]="app.Color">
+                <img *ngIf="app.PictureUrl" kendoCardMedia [src]="app.PictureUrl" />
+                <kendo-card-body>
+                    <h4>{{ app.Title || app.Name }}</h4>
+                    <div>
+                        <hr kendoCardSeparator />
+                        <p>
+                            {{ app.Description }}
+                        </p>
+                    </div>
+                </kendo-card-body>
+                <kendo-card-actions>
+                    <button [disabled]="!app.Url" kendoButton primary="true" look="flat" (click)="navigateApp(app.Url)">
+                        Open {{ app.Name }} &raquo;
+                    </button>
+                </kendo-card-actions>
+            </kendo-card>
+        </div>
+    </div>
+    <kendo-dialog-actions>
+        <button kendoButton [primary]="true" (click)="toggleAppLauncher()" i18n="@@Close">
+            <i class="fas fa-times"></i>
+            Close
+        </button>
+    </kendo-dialog-actions>
+</kendo-dialog>

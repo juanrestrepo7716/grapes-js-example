@@ -1,0 +1,1 @@
+npx kendo-translate src\_temp\messages.nl.xlf --locale nl-NL --force

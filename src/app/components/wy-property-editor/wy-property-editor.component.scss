@@ -1,0 +1,17 @@
+.wy-property-editor {
+    input[type="text"],
+    textarea {
+        width: 100%;
+    }
+
+    textarea {
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-radius: 0;
+    }
+
+    label.control-label {
+        font-weight: bold;
+    }
+}

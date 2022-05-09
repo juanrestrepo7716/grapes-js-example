@@ -1,0 +1,25 @@
+// kendo overrides
+// vars: node_modules\@progress\kendo-theme-material\scss\_variables.scss
+
+$primary: $app-color;
+$secondary: $app-secondary-color;
+
+$grid-border: #ffffff;
+$grid-toolbar-padding-x: 0;
+
+$window-titlebar-padding-x: 16px;
+$window-titlebar-padding-y: 16px;
+$window-inner-padding-x: 16px;
+$window-inner-padding-y: 16px;
+
+$cell-padding-x: 5px;
+$cell-padding-y: 5px;
+$cell-padding: 5px;
+
+$tabstrip-content-padding-x: 16px;
+$tabstrip-content-padding-y: 16px;
+
+$panelbar-item-selected-bg: $app-color;
+$panelbar-item-selected-text: #ffffff;
+$panelbar-header-selected-bg: $app-color;
+$panelbar-header-selected-text: #ffffff;

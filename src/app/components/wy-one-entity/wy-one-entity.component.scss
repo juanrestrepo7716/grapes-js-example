@@ -1,0 +1,71 @@
+//::Bag::Default
+.wy-one-entity {
+    .wy-one-entity-readonly, .wy-one-entity-editable {
+        padding: 8px;
+    }
+    div.wy-validation-message {
+        padding: 0.2rem;
+        margin-top: 0.2rem;
+    }
+    span.wy-is-required {
+        color: red;
+        font-weight: bold;
+    }
+    input.wy-input-coord {
+        width: auto;
+    }
+    .k-file-name {
+        cursor: pointer;
+    }
+    .form-group {
+        input[type="text"],
+        textarea {
+            width: 100%;
+        }
+        textarea {
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-radius: 0;
+        }
+        label.control-label {
+            font-weight: bold;
+        }
+    }
+    .col-fill {
+        height: 100%;
+    }
+    .wy-property-value {
+    }
+    .wy-uom-value {
+        display: inline-block;
+    }
+    .wy-property-translatable-text {
+        background-position: top 1px right 0px;
+        background-size: 30px;
+        background-repeat: no-repeat;
+    }
+    .wy-html-edit {
+        .k-tabstrip > .k-content {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+    .k-tabstrip-left {
+        > .k-content {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+    .wy-property-description {
+        font-weight: normal;
+        color: #888;
+    }
+}
+@media (max-width: 568px) {
+    .wy-one-entity {
+        kendo-dropdownlist {
+            width: 100% !important;
+        }
+    }
+}

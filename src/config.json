@@ -1,0 +1,10 @@
+{
+    "deploymentUri": "http://localhost:4301/api",
+    "defaultCultureTwoLetterISOLanguageName": "en",
+    "accessTokenTimeoutInSeconds": "43200",
+    "reportServerUri": "",
+    "jwtIssuer": "https://estiom.com/Todo",
+    "jwtCookieName": "todo_token",
+    "authenticatorUri": "",
+    "appLauncherConfigUri": ""
+}

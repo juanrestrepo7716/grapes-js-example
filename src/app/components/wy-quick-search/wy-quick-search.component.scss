@@ -1,0 +1,18 @@
+.wy-quick-search {
+    margin-top: 4px;
+    margin-bottom: 4px;
+
+    .form-control {
+        border-radius: 5px !important;
+        margin-bottom: 4px;
+        box-shadow: inset 0px 0px 1px 1px #efefef;
+        border: 0;
+        width: auto;
+    }
+
+    button.k-button {
+        box-shadow: none;
+        background-color: #fff;
+        margin: 2px;
+    }
+}

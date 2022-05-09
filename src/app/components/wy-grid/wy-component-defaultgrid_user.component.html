@@ -1,0 +1,262 @@
+<div class="wy-grid">
+            <wy-quick-search *ngIf="showQuickSearch" #quickSearch
+                (quickSearchChange)="quickSearchChangeHandler($event)"
+                [storageKey]="quickSearchStorageKey">
+            </wy-quick-search>
+    <div *ngIf="showToolbar && !asRecycleBin">
+        <wy-grid-toolbar
+            [showNew]="true && isFeatureEnabled('Add_User')"
+            [showGridViewMode]="false"
+            [gridViewMode]="gridViewMode"
+            (onAction)="onToolbarAction($event)">
+            <div newButton>
+                    <button [wyIsFeatureEnabled]="'Add_User'" [disabled]="!!selectedEntity" class="wy-button wy-cls-create-new" kendoButton (click)="addNewEntity()"
+                        title="New" i18n-title="@@New">
+                        <i class="fas fa-plus-circle wy-green"></i>
+                        <span class="d-none d-sm-inline wy-label-indent" i18n="@@New">New</span>
+                    </button>
+            </div>
+        </wy-grid-toolbar>
+    </div>
+    <kendo-grid *ngIf="gridViewMode == 'Columns'" wyGrid [data]="gridDataResult"
+                [autoSize]="false"
+                [loading]="loading"
+                [filterable]="filterable"
+                [groupable]="groupable"
+                [group]="groups"
+                [skip]="state.skip"
+                [pageSize]="state.take"
+                [sort]="state.sort"
+                [filter]="state.filter"
+                (groupChange)="groupChange($event)"
+                (pageChange)="pageChangeHandler($event)"
+                (filterChange)="filterChangeHandler($event)"
+                (cellClick)="cellClickHandler($event)"
+                (sortChange)="sortChangeHandler($event)"
+                (add)="addNewEntity()"
+                [rowClass]="rowClassCallback"
+                [selectable]="{ enabled: true, mode: 'single' }"
+                [rowSelected]="isThisEntitySelected">                
+        <kendo-grid-column [minResizableWidth]="gcd.Id.minColWidth"
+                [hidden]="!gcc.Id.visible" field="Id"
+                i18n-title="@@Id" title="Id"
+                filter="numeric">
+            <ng-template kendoGridCellTemplate let-entity>
+                <span class="wy-id">{{ entity.Id }}</span>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column [minResizableWidth]="gcd['@odata.type'].minColWidth"
+                [hidden]="!gcc['@odata.type'].visible" title="🛈" [autoSize]="false"
+                [width]="gcd['@odata.type'].minColWidth">
+            <ng-template kendoGridCellTemplate let-entity>
+                <div *ngIf="getClassName(entity) == 'User'" [title]="getEntityTooltip(entity)" class="wy-coin">
+                    <i i18n-title="@@DisplayLabelClass_User"
+                        [style.backgroundColor]="'#000000'" class="fa-user fa-fw"></i>
+                </div>
+            </ng-template>
+        </kendo-grid-column>
+            <kendo-grid-column wyGridColumn [gcd]="gcd.Name" [hidden]="!gcc.Name.visible"
+                i18n-title="@@DisplayLabelGridColumn_Name" title="Name">
+            </kendo-grid-column>
+            <kendo-grid-column wyGridColumn [gcd]="gcd.Notes" [hidden]="!gcc.Notes.visible"
+                i18n-title="@@DisplayLabelGridColumn_Notes" title="Notes">
+                    <ng-template kendoGridCellTemplate let-entity>
+                        <div [innerHTML]="entity.Notes | safeHtml"></div>
+                    </ng-template>
+            </kendo-grid-column>
+            <kendo-grid-column wyGridColumn [gcd]="gcd.EmailAddress" [hidden]="!gcc.EmailAddress.visible"
+                i18n-title="@@DisplayLabelGridColumn_EmailAddress" title="Email Address">
+            </kendo-grid-column>
+            <kendo-grid-column wyGridColumn [gcd]="gcd.Picture" [hidden]="!gcc.Picture.visible"
+                i18n-title="@@DisplayLabelGridColumn_Picture" title="Picture">
+                    <ng-template kendoGridCellTemplate let-entity>
+                        <wy-image-viewer *ngIf="entity.Picture"
+                            [title]="entity.Picture"
+                            [size]="entity.Picture_Size"
+                            [src]="getBlobUri(entity.Picture)">
+                        </wy-image-viewer>
+                    </ng-template>
+            </kendo-grid-column>
+            <kendo-grid-column wyGridColumn [gcd]="gcd.Color" [hidden]="!gcc.Color.visible"
+                i18n-title="@@DisplayLabelGridColumn_Color" title="Color">
+                    <ng-template kendoGridCellTemplate let-entity>
+                        <div [style.color]="entity.Color" style="font-weight: bold;">{{ entity.Color }}</div>
+                    </ng-template>
+            </kendo-grid-column>
+            <kendo-grid-column wyGridColumn [gcd]="gcd.Description" [hidden]="!gcc.Description.visible"
+                i18n-title="@@DisplayLabelGridColumn_Description" title="Description">
+            </kendo-grid-column>
+            <kendo-grid-column wyGridColumn [gcd]="gcd.Enabled" [hidden]="!gcc.Enabled.visible"
+                i18n-title="@@DisplayLabelGridColumn_Enabled" title="Enabled">
+                    <ng-template kendoGridCellTemplate let-entity>
+                        <input type="checkbox" [checked]="entity.Enabled" disabled />
+                    </ng-template>
+                    <ng-template kendoGridGroupHeaderTemplate let-group>
+                        <span>Enabled:&nbsp;</span>
+                        <input type="checkbox" [checked]="group.items[0].Enabled" disabled />
+                    </ng-template>
+            </kendo-grid-column>
+            <kendo-grid-column wyGridColumn [gcd]="gcd.Attachment" [hidden]="!gcc.Attachment.visible"
+                i18n-title="@@DisplayLabelGridColumn_Attachment" title="Attachment">
+                    <ng-template kendoGridCellTemplate let-entity>
+                        <wy-component-attachmentstuff></wy-component-attachmentstuff>
+                    </ng-template>
+            </kendo-grid-column>
+            <kendo-grid-command-column title="" [width]="50" [minResizableWidth]="50">
+                <ng-template kendoGridCellTemplate let-entity let-rowIndex="rowIndex">
+                    <kendo-dropdownbutton class="wy-button wy-cls-entity-actions"
+                        [data]="entityGridActionsDropDownButtons"
+                        [icon]="'more-horizontal'"
+                        [popupSettings]="{ popupClass: 'wy-entity-grid-actions-dropdown' }"
+                        (itemClick)="triggerEntityGridAction(entity, $event, rowIndex)">
+                        <ng-template kendoDropDownButtonItemTemplate let-dataItem>
+                            <div *ngIf="dataItem.name == '$delete'" class="wy-cls-delete">
+                                <i *ngIf="!entity.DeleteStatus" class="fas fa-times fa-fw"></i>
+                                <i *ngIf="entity.DeleteStatus == 1" class="fas fa-trash-restore fa-fw"></i>
+                                <span *ngIf="!entity.DeleteStatus" class="wy-label-indent" i18n="@@Delete">Delete</span>
+                                <span *ngIf="entity.DeleteStatus == 1" class="wy-label-indent" i18n="@@Restore">Restore</span>
+                            </div>
+                            <div *ngIf="dataItem.name == '$copy'" class="wy-cls-copy">
+                                <i class="fas fa-copy fa-fw"></i>
+                                <span class="wy-label-indent" i18n="@@Copy">Copy</span>
+                            </div>
+                            <div *ngIf="dataItem.name == '$moveUp'" class="wy-cls-up">
+                                <i class="fas fa-arrow-up fa-fw"></i>
+                                <span class="wy-label-indent" i18n="@@MoveUp">Move up</span>
+                            </div>
+                            <div *ngIf="dataItem.name == '$moveDown'" class="wy-cls-down">
+                                <i class="fas fa-arrow-down fa-fw"></i>
+                                <span class="wy-label-indent" i18n="@@MoveDown">Move down</span>
+                            </div>
+                        </ng-template>
+                    </kendo-dropdownbutton>
+                </ng-template>
+            </kendo-grid-command-column>
+        <kendo-grid-pdf fileName="Users.pdf" [allPages]="false" paperSize="A4" [scale]="0.5" [repeatHeaders]="true" [landscape]="true">
+            <kendo-grid-pdf-margin top="1cm" left="1cm" right="1cm" bottom="1cm"></kendo-grid-pdf-margin>
+        </kendo-grid-pdf>
+        <kendo-grid-excel fileName="Users.xlsx"></kendo-grid-excel>
+        <ng-template kendoPagerTemplate>
+            <kendo-datapager
+                [style.width.%]="100"
+                [skip]="state.skip"
+                [pageSize]="state.take"
+                [pageSizeValues]="[5, 10, 20, 100, 500, 1000]"
+                [total]="gridDataResult?.total"
+                (pageChange)="pageChangeHandler($event)">
+            </kendo-datapager>
+        </ng-template>
+    </kendo-grid>
+    <wy-entity-window *ngIf="selectedEntity && !selectedEntityKind"
+        title="User"
+        i18n-title="@@DisplayLabelClass_User"
+        icon="fa-user"
+        color="#000000"
+        [entity]="selectedEntity"
+        [isNew]="selectedEntityIsNew"
+        [readonly]="selectedAsReadonly"
+        (save)="saveEntityHandler($event)"
+        (cancel)="cancelEntityHandler()">
+        <wy-component-defaultoneentity_user
+            #oneEntity *ngIf="!selectedEntityKind"
+            [entity]="selectedEntity"
+            [isNew]="selectedEntityIsNew"
+            [commentsActive]="!selectedEntityIsNew"
+            [readonly]="selectedAsReadonly">
+        </wy-component-defaultoneentity_user>
+    </wy-entity-window>
+    <kendo-dialog [width]="dialogWidth" [height]="dialogHeight" *ngIf="gridConfigurationActive" (close)="closeGridConfiguration()" class="wy-grid-configuration">
+        <kendo-dialog-titlebar>
+            <ng-container i18n="@@GridConfiguration">Configure</ng-container>
+        </kendo-dialog-titlebar>
+        <kendo-tabstrip>
+            <kendo-tabstrip-tab i18n-title="@@Columns" title="Columns" [selected]="true">
+                <ng-template kendoTabContent>
+                    <label class="control-label">
+                        <input type="checkbox" [(ngModel)]="gcc['@odata.type'].visible" />
+                        🛈
+                    </label>
+                    <br>
+                    <label class="control-label">
+                        <input type="checkbox" [(ngModel)]="gcc.Id.visible" />
+                        <span i18n="@@Id">Id</span>
+                    </label>
+                    <br>
+                    <div class="card-columns">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title" i18n="@@DisplayLabelPropertyGroup_User">User</h5>
+                                    <div class="card-body">
+                                                <label class="wy-cls-property-name control-label">
+                                                    <input type="checkbox" [(ngModel)]="gcc.Name.visible" />
+                                                    <span i18n="@@DisplayLabelProperty_Name">Name</span>                                                    
+                                                </label>
+                                                <br>
+                                                <label class="wy-cls-property-emailaddress control-label">
+                                                    <input type="checkbox" [(ngModel)]="gcc.EmailAddress.visible" />
+                                                    <span i18n="@@DisplayLabelProperty_EmailAddress">Email Address</span>                                                    
+                                                </label>
+                                                <br>
+                                                <label class="wy-cls-property-picture control-label">
+                                                    <input type="checkbox" [(ngModel)]="gcc.Picture.visible" />
+                                                    <span i18n="@@DisplayLabelProperty_Picture">Picture</span>                                                    
+                                                </label>
+                                                <br>
+                                                <label class="wy-cls-property-color control-label">
+                                                    <input type="checkbox" [(ngModel)]="gcc.Color.visible" />
+                                                    <span i18n="@@DisplayLabelProperty_Color">Color</span>                                                    
+                                                </label>
+                                                <br>
+                                                <label class="wy-cls-property-description control-label">
+                                                    <input type="checkbox" [(ngModel)]="gcc.Description.visible" />
+                                                    <span i18n="@@DisplayLabelProperty_Description">Description</span>                                                    
+                                                </label>
+                                                <br>
+                                                <label class="wy-cls-property-enabled control-label">
+                                                    <input type="checkbox" [(ngModel)]="gcc.Enabled.visible" />
+                                                    <span i18n="@@DisplayLabelProperty_Enabled">Enabled</span>                                                    
+                                                </label>
+                                                <br>
+                                                <label class="wy-cls-property-attachment control-label">
+                                                    <input type="checkbox" [(ngModel)]="gcc.Attachment.visible" />
+                                                    <span i18n="@@DisplayLabelProperty_Attachment">Attachment</span>                                                    
+                                                </label>
+                                                <br>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title" i18n="@@DisplayLabelPropertyGroup_Notes">Notes</h5>
+                                    <div class="card-body">
+                                                <label class="wy-cls-property-notes control-label">
+                                                    <input type="checkbox" [(ngModel)]="gcc.Notes.visible" />
+                                                    <span i18n="@@DisplayLabelProperty_Notes">Notes</span>                                                    
+                                                </label>
+                                                <br>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </ng-template>
+            </kendo-tabstrip-tab>
+        </kendo-tabstrip>
+        <kendo-dialog-actions>
+            <button kendoButton (click)="resetGridConfiguration($event)" i18n="@@Reset">Reset</button>
+            <button kendoButton [primary]="true" (click)="saveGridConfiguration($event)" i18n="@@Save">Save</button>
+        </kendo-dialog-actions>
+    </kendo-dialog>
+    <kendo-dialog [width]="dialogWidth" [height]="dialogHeight" *ngIf="pivotReport" (close)="closePivot()" class="wy-pivot">
+        <kendo-dialog-titlebar>
+            <ng-container i18n="@@Pivot">Pivot</ng-container>
+        </kendo-dialog-titlebar>
+        <wy-pivot [toolbar]="true"
+            [width]="'100%'"
+            [height]="dialogHeight - 130"
+            [report]="pivotReport">
+        </wy-pivot>
+        <kendo-dialog-actions>
+            <button kendoButton [primary]="true" (click)="closePivot()" i18n="@@Close">Close</button>
+        </kendo-dialog-actions>
+    </kendo-dialog>
+</div>
